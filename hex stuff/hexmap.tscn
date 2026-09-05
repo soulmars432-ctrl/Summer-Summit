@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://hg57ccm3kfoh"]
+[gd_scene format=4 uid="uid://hg57ccm3kfoh"]
 
 [ext_resource type="Texture2D" uid="uid://chcl41b6cchj" path="res://hex stuff/hextile.png" id="1_ei64t"]
 [ext_resource type="Script" uid="uid://cjdcncqiyeb1l" path="res://hex stuff/playercontroller.gd" id="2_i5lwy"]
