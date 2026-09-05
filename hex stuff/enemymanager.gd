@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func _on_turn_started(state) -> void:
 	if state == TurnManager.State.Enemyturn:
-		step_enemies_toward_player(player.cell, tilemap)
+		step_dragon_toward_player(player.cell, tilemap)
 
 func register_enemy(enemy: Node2D, cell: Vector2i) -> void:
 	enemies[cell] = enemy
@@ -88,8 +88,6 @@ func _get_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMap) -> Vector2
 	return best
 	
 func _get_dragon_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMap) -> Vector2i:
-	var test = tilemap.get_neighbor_cell(Vector2i(3,3), TileSet.CELL_NEIGHBOR_RIGHT_SIDE)
-	print("from ", Vector2i(3,3), " -> ", test)
 	var neighbors = get_dragon_moves(from, tilemap)
 	var best = from
 	var best_dist = _hex_distance(from, to)
@@ -138,23 +136,19 @@ func spawn_pending_wave(tilemap: TileMap, parent: Node) -> void:
 	wave_started.emit()
 
 func get_dragon_moves(pos: Vector2i, tilemap: TileMap) -> Array:
-	var possible = Array()
-	for c in tilemap.get_surrounding_cells(pos):
-		possible.append_array(tilemap.get_surrounding_cells(c))
+	var possible = []
+	#for c in tilemap.get_surrounding_cells(pos):
+		#possible.append_array(tilemap.get_surrounding_cells(c))
+	#return possible
+	var directions = [
+		Vector2i(1, 0),   # E # NE
+		Vector2i(0, -1),  # N
+		Vector2i(-1, 0),  # W
+		Vector2i(0, 1),   # S
+	]
+	for d in directions:
+		possible.append_array(generate(pos, d, tilemap, []))
 	return possible
-	
-#	var res = []
-	#var directions = [
-	#	Vector2i(1, 0),   # E
-	#	Vector2i(1, -1),  # NE
-	#	Vector2i(0, -1),  # N
-	#	Vector2i(-1, 0),  # W
-	#	Vector2i(-1, 1),  # SW
-	#	Vector2i(0, 1),   # S
-	#]
-	#for d in directions:
-	#	res.append_array(generate(pos, d, tilemap, []))
-	#return res
 
 func generate(cell: Vector2i, dir: Vector2i, tilemap: TileMap, res: Array) -> Array:
 	var new_cell = cell + dir
