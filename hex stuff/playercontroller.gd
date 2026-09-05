@@ -57,8 +57,6 @@ func _try_resolve_click(target: Vector2i) -> void:
 	else:
 		_clear_highlights()
 
-	TurnManager.spend_action()
-
 func _move_to(target: Vector2i) -> void:
 	cell = target
 	position = tilemap.map_to_local(target)

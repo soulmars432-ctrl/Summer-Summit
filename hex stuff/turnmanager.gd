@@ -1,7 +1,7 @@
 extends Node2D
 class_name Turnmanager
 
-enum State {Playerturn, Enemyturn}
+enum State {Rolling, Playerturn, Enemyturn}
 
 var state: State = State.Playerturn
 var actions_remaining: int = 0
@@ -10,13 +10,19 @@ signal turn_started(state)
 signal action_taken(actions_left)
 signal player_turn_end
 signal enemy_turn_end
+signal roll_requested(final_value)
 
 func rolldie() -> int:
 	return randi_range(1, 6)
 
 func start_player_turn() -> void:
+	state = State.Rolling
+	turn_started.emit(state)
+	var roll = rolldie()
+	roll_requested.emit(roll)
+	await get_tree().create_timer(1.6).timeout
+	actions_remaining = roll
 	state = State.Playerturn
-	actions_remaining = rolldie()
 	turn_started.emit(state)
 	action_taken.emit(actions_remaining)
 

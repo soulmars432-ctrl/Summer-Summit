@@ -2,6 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://chcl41b6cchj" path="res://hex stuff/hextile.png" id="1_ei64t"]
 [ext_resource type="PackedScene" uid="uid://bbe30hps30tvu" path="res://player.tscn" id="2_i5lwy"]
+[ext_resource type="FontFile" uid="uid://c1sxqk3386riu" path="res://hex stuff/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf" id="3_fc8ok"]
+[ext_resource type="Script" uid="uid://cprmevwyv26gh" path="res://hex stuff/actions.gd" id="3_mu5m0"]
+[ext_resource type="Texture2D" uid="uid://c4qsf6aidwafd" path="res://hex stuff/d1.png" id="4_ei8ir"]
+[ext_resource type="Texture2D" uid="uid://bver617balcmw" path="res://hex stuff/d2.png" id="5_ffuv8"]
+[ext_resource type="Texture2D" uid="uid://yqi3yi3khjnd" path="res://hex stuff/d3.png" id="6_mxfnm"]
+[ext_resource type="Texture2D" uid="uid://1xng4papw8hd" path="res://hex stuff/d4.png" id="7_7nkik"]
+[ext_resource type="Texture2D" uid="uid://y6qukj42itgb" path="res://hex stuff/d5.png" id="8_nuo3n"]
+[ext_resource type="Texture2D" uid="uid://hos71q1o228s" path="res://hex stuff/d6.png" id="9_dr6jq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5lwy"]
 texture = ExtResource("1_ei64t")
@@ -75,7 +83,28 @@ layer_0/z_index = 1
 layer_0/tile_data = PackedInt32Array(-196608, 0, 0, -131073, 0, 0, -65538, 0, 0, -65539, 0, 0, -3, 0, 0, 65534, 0, 0, -2, 0, 0, -65537, 0, 0, -131072, 0, 0, -196607, 0, 0, -65536, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -65533, 0, 0, 2, 0, 0, -65534, 0, 0, -65535, 0, 0, 1, 0, 0, 65536, 0, 0, 0, 0, 0, -1, 0, 0, 65535, 0, 0, 131070, 0, 0, 65533, 0, 0, 131069, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131071, 0, 0, 65537, 0, 0, 65538, 0, 0, 3, 0, 0, 65539, 0, 0, 131074, 0, 0, 131073, 0, 0, 196608, 0, 0)
 
 [node name="Player" parent="." unique_id=685893003 node_paths=PackedStringArray("tilemap", "highlightgreen", "highlightred") instance=ExtResource("2_i5lwy")]
-position = Vector2(-6, 6)
 tilemap = NodePath("../TileMap")
 highlightgreen = NodePath("../Highlightgreen")
 highlightred = NodePath("../Highlightred")
+
+[node name="UI" type="Node2D" parent="." unique_id=1919692476 node_paths=PackedStringArray("die_sprite", "actions_label")]
+position = Vector2(-600, 128)
+script = ExtResource("3_mu5m0")
+die_sprite = NodePath("Die")
+die_faces = Array[Texture2D]([ExtResource("4_ei8ir"), ExtResource("5_ffuv8"), ExtResource("6_mxfnm"), ExtResource("7_7nkik"), ExtResource("8_nuo3n"), ExtResource("9_dr6jq")])
+actions_label = NodePath("Actions")
+
+[node name="Actions" type="Label" parent="UI" unique_id=124278698]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_right = 256.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_fc8ok")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="Die" type="Sprite2D" parent="UI" unique_id=1428179529]
+position = Vector2(128, 160)
+scale = Vector2(5, 5)
