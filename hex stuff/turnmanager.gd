@@ -36,6 +36,8 @@ func spend_action() -> void:
 
 func end_player_turn() -> void:
 	player_turn_end.emit()
+	if EnemyManager.has_pending_wave():
+		EnemyManager.spawn_pending_wave()
 	start_enemy_turn()
 
 func start_enemy_turn() -> void:

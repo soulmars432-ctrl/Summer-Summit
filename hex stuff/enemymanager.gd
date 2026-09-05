@@ -2,6 +2,7 @@ extends Node
 
 var enemies: Dictionary = {}
 var tilemap: TileMap
+var enemy_parent: Node
 var player: Playercontroller
 var enemy_scene: PackedScene = preload("res://hex stuff/enemy.tscn")
 var pending_spawn_cells: Array = []
@@ -10,9 +11,6 @@ signal wave_started
 
 func _ready() -> void:
 	TurnManager.turn_started.connect(_on_turn_started)
-	print(Engine.get_version_info())
-	
-
 
 func _on_turn_started(state) -> void:
 	if state == TurnManager.State.Enemyturn:
@@ -30,6 +28,13 @@ func kill(enemy: Node2D) -> void:
 		enemies.erase(cell)
 	enemy.queue_free()
 	GameManager.add_score()
+
+	if enemies.is_empty():
+		_on_wave_cleared()
+
+func _on_wave_cleared() -> void:
+	var valid_cells = tilemap.get_used_cells(0)
+	announce_next_wave(4, valid_cells, [player.cell])
 
 func _find_cell_for(enemy: Node2D):
 	for c in enemies.keys():
@@ -87,6 +92,10 @@ func _get_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMap) -> Vector2
 			best_dist = d
 			best = n
 	return best
+
+func has_pending_wave() -> bool:
+	return not pending_spawn_cells.is_empty()
+
 func _get_dragon_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMap) -> Vector2i:
 	var test = tilemap.get_neighbor_cell(Vector2i(3,3), TileSet.CELL_NEIGHBOR_RIGHT_SIDE)
 	print("from ", Vector2i(3,3), " -> ", test)
@@ -108,6 +117,28 @@ func offset_to_axial(cell: Vector2i) -> Vector2i:
 	var q = cell.x
 	var r = cell.y - (cell.x - (cell.x & 1)) / 2
 	return Vector2i(q, r)
+	
+func axial_to_offset(axial: Vector2i) -> Vector2i:
+	var col = axial.x
+	var row = axial.y + (axial.x - (axial.x & 1)) / 2
+	return Vector2i(col, row)
+	
+const hexdir = [
+	Vector2i(1, 0), Vector2i(1, -1), Vector2i(0, -1),
+	Vector2i(-1, 0), Vector2i(-1, 1), Vector2i(0, 1)
+]
+
+func get_line_cells(from_offset: Vector2i, tilemap: TileMap, max_range: int = 10) -> Array:
+	var line_cells = []
+	var from_axial = offset_to_axial(from_offset)
+	for dir in hexdir:
+		for step in range(1, max_range + 1):
+			var axial_step = from_axial + dir * step
+			var offset_step = axial_to_offset(axial_step)
+			if not tilemap.get_used_cells(0).has(offset_step):
+				break
+			line_cells.append(offset_step)
+	return line_cells
 
 func _hex_distance(a: Vector2i, b: Vector2i) -> int:
 	var axial_a = offset_to_axial(a)
@@ -128,10 +159,10 @@ func announce_next_wave(count: int, valid_cells: Array, exclude: Array = []) -> 
 		pending_spawn_cells.append(c)
 	wave_incoming.emit(pending_spawn_cells)
 
-func spawn_pending_wave(tilemap: TileMap, parent: Node) -> void:
+func spawn_pending_wave() -> void:
 	for cell in pending_spawn_cells:
 		var enemy = enemy_scene.instantiate()
-		parent.add_child(enemy)
+		enemy_parent.add_child(enemy)
 		enemy.place_at(cell, tilemap)
 		register_enemy(enemy, cell)
 	pending_spawn_cells.clear()
