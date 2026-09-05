@@ -3,7 +3,8 @@ extends Node
 var enemies: Dictionary = {}
 var tilemap: TileMap
 var player: Playercontroller
-var enemy_scene: PackedScene = preload("res://hex stuff/enemy.tscn")
+var goblin_scene: PackedScene = preload("res://hex stuff/enemy.tscn")
+var dragon_scene: PackedScene = preload("res://hex stuff/dragon.tscn")
 var pending_spawn_cells: Array = []
 signal wave_incoming(spawn_cells)
 signal wave_started
@@ -11,8 +12,6 @@ signal wave_started
 func _ready() -> void:
 	TurnManager.turn_started.connect(_on_turn_started)
 	print(Engine.get_version_info())
-	
-
 
 func _on_turn_started(state) -> void:
 	if state == TurnManager.State.Enemyturn:
@@ -87,6 +86,7 @@ func _get_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMap) -> Vector2
 			best_dist = d
 			best = n
 	return best
+	
 func _get_dragon_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMap) -> Vector2i:
 	var test = tilemap.get_neighbor_cell(Vector2i(3,3), TileSet.CELL_NEIGHBOR_RIGHT_SIDE)
 	print("from ", Vector2i(3,3), " -> ", test)
@@ -130,7 +130,7 @@ func announce_next_wave(count: int, valid_cells: Array, exclude: Array = []) -> 
 
 func spawn_pending_wave(tilemap: TileMap, parent: Node) -> void:
 	for cell in pending_spawn_cells:
-		var enemy = enemy_scene.instantiate()
+		var enemy = goblin_scene.instantiate()
 		parent.add_child(enemy)
 		enemy.place_at(cell, tilemap)
 		register_enemy(enemy, cell)
@@ -138,18 +138,23 @@ func spawn_pending_wave(tilemap: TileMap, parent: Node) -> void:
 	wave_started.emit()
 
 func get_dragon_moves(pos: Vector2i, tilemap: TileMap) -> Array:
-	var res = []
-	var directions = [
-		Vector2i(1, 0),   # E
-	Vector2i(1, -1),  # NE
-	Vector2i(0, -1),  # N
-	Vector2i(-1, 0),  # W
-	Vector2i(-1, 1),  # SW
-	Vector2i(0, 1),   # S
-	]
-	for d in directions:
-		res.append_array(generate(pos, d, tilemap, []))
-	return res
+	var possible = Array()
+	for c in tilemap.get_surrounding_cells(pos):
+		possible.append_array(tilemap.get_surrounding_cells(c))
+	return possible
+	
+#	var res = []
+	#var directions = [
+	#	Vector2i(1, 0),   # E
+	#	Vector2i(1, -1),  # NE
+	#	Vector2i(0, -1),  # N
+	#	Vector2i(-1, 0),  # W
+	#	Vector2i(-1, 1),  # SW
+	#	Vector2i(0, 1),   # S
+	#]
+	#for d in directions:
+	#	res.append_array(generate(pos, d, tilemap, []))
+	#return res
 
 func generate(cell: Vector2i, dir: Vector2i, tilemap: TileMap, res: Array) -> Array:
 	var new_cell = cell + dir

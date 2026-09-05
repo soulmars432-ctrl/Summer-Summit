@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bdv2to8ulk3j1"]
+
+[ext_resource type="Script" path="res://ui/rich_text_label.gd" id="1_bwjgb"]
+[ext_resource type="FontFile" uid="uid://ccuulr64qqs18" path="res://font/darinia/Darinia.ttf" id="1_udkah"]
+[ext_resource type="Script" uid="uid://dujwaa6x75kfn" path="res://ui/play_game.gd" id="3_4c782"]
+[ext_resource type="Script" path="res://ui/controls.gd" id="5_fcydj"]
+
+[node name="View" type="MarginContainer" unique_id=1707073229]
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=218277980]
+layout_mode = 2
+color = Color(0.39397833, 0.2872876, 0.23269042, 1)
+
+[node name="Menu" type="MarginContainer" parent="." unique_id=938237814]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 120
+
+[node name="Game Title" type="RichTextLabel" parent="Menu" unique_id=225469420]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_udkah")
+theme_override_font_sizes/normal_font_size = 64
+text = "STONECLEANSER"
+horizontal_alignment = 1
+script = ExtResource("1_bwjgb")
+
+[node name="Switches" type="VBoxContainer" parent="Menu" unique_id=1086880826]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Start" type="Button" parent="Menu/Switches" unique_id=1674035535]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_udkah")
+theme_override_font_sizes/font_size = 32
+text = "START GAME	"
+icon_alignment = 1
+script = ExtResource("3_4c782")
+
+[node name="Controls Layout" type="VBoxContainer" parent="." unique_id=608669130]
+custom_minimum_size = Vector2(1000, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 16
+script = ExtResource("5_fcydj")
+
+[node name="Controls" type="RichTextLabel" parent="Controls Layout" unique_id=798371294]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_udkah")
+theme_override_font_sizes/normal_font_size = 32
+text = "CONTROLS"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Controls Layout" unique_id=534050955]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_udkah")
+theme_override_font_sizes/normal_font_size = 28
+text = "LEFT CLICK - MOVE"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 2

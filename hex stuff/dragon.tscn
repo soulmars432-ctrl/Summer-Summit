@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://hsdhdbqqjnfu"]
+
+[ext_resource type="Script" uid="uid://cgb0iomwcgowi" path="res://hex stuff/enemy.gd" id="1_4n7gc"]
+[ext_resource type="Texture2D" uid="uid://cq4js657iii22" path="res://warboss.png" id="1_ixu8j"]
+
+[node name="Enemy" type="Node2D" unique_id=1320795149]
+script = ExtResource("1_4n7gc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1897728430]
+scale = Vector2(2, 2)
+texture = ExtResource("1_ixu8j")

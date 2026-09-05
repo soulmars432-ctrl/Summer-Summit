@@ -35,6 +35,7 @@ func _highlight_valid_moves() -> void:
 				continue
 			if not EnemyManager.enemies.has(danger_cell):
 				highlightred.set_cell(0, danger_cell, 0, highlightcoords)
+				
 func _clear_highlights() -> void:
 	for n in highlightgreen.get_used_cells(0):
 		highlightgreen.erase_cell(0, n)
