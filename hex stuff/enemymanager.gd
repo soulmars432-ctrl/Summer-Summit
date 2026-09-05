@@ -1,7 +1,8 @@
 extends Node
 
 var enemies: Dictionary = {}
-var tilemap: TileMap
+var tilemap: TileMapLayer
+
 var enemy_parent: Node
 var player: Playercontroller
 var goblin_scene: PackedScene = preload("res://hex stuff/enemy.tscn")
@@ -19,7 +20,7 @@ func _on_turn_started(state) -> void:
 	if state == TurnManager.State.Enemyturn:
 		step_all_enemies_toward_player(player.cell, tilemap)
 
-func step_all_enemies_toward_player(player_cell: Vector2i, tilemap: TileMap) -> void:
+func step_all_enemies_toward_player(player_cell: Vector2i, tilemap: TileMapLayer) -> void:
 	var old_positions = enemies.duplicate()
 	enemies.clear()
 
@@ -70,14 +71,14 @@ func _find_cell_for(enemy: Node2D):
 			return c
 	return null
 
-func _get_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMap) -> Vector2i:
+func _get_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMapLayer) -> Vector2i:
 	var neighbors = tilemap.get_surrounding_cells(from)
 	var best = from
 	var best_dist = _hex_distance(from, to)
 	for n in neighbors:
 		if enemies.has(n):
 			continue
-		if not tilemap.get_used_cells(0).has(n):
+		if not tilemap.get_used_cells().has(n):
 			continue
 		var d = _hex_distance(n, to)
 		if d < best_dist:
@@ -88,8 +89,8 @@ func _get_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMap) -> Vector2
 func has_pending_wave() -> bool:
 	return not pending_spawn_cells.is_empty()
 
-func _get_dragon_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMap) -> Vector2i:
-	var reachable = get_line_cells(from, tilemap)
+func _get_dragon_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMapLayer) -> Vector2i:
+	var reachable = get_dragon_moves(from, tilemap)
 	var best = from
 	var best_dist = _hex_distance(from, to)
 	for n in reachable:
@@ -99,17 +100,7 @@ func _get_dragon_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMap) -> 
 		if d < best_dist:
 			best_dist = d
 			best = n
-	var from_axial = offset_to_axial(from)
-	var best_axial = offset_to_axial(best)
-	var diff = best_axial - from_axial
-	if diff != Vector2i.ZERO:
-		var step_dir = Vector2i(sign(diff.x), sign(diff.y))
-		var one_step_axial = from_axial + step_dir
-		return axial_to_offset(one_step_axial)
-	return from
-
-func _get_orc_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMap) -> Vector2i:
-	return _get_step_toward(from, to, tilemap)
+	return best
 
 func offset_to_axial(cell: Vector2i) -> Vector2i:
 	var q = cell.x
@@ -173,7 +164,81 @@ func spawn_pending_wave() -> void:
 
 func try_announce_wave_if_cleared() -> void:
 	if wave_cleared_pending:
-		var valid_cells = tilemap.get_used_cells(0)
+		var valid_cells = tilemap.get_used_cells()
 		announce_next_wave(4, valid_cells)
 		wave_cleared_pending = false
 		wave_announced_this_turn = true
+
+func step_orc_toward_player(player_cell: Vector2i, map: TileMapLayer) -> void:
+	var old_positions = enemies.duplicate()
+	enemies.clear()
+
+	for cell in old_positions.keys():
+		var enemy = old_positions[cell]
+		var next_cell = _get_orc_step_toward(cell, player_cell, map)
+
+		if next_cell == player_cell:
+			GameManager.player_died()
+			enemies[cell] = enemy
+			continue
+
+		enemy.position = tilemap.map_to_local(next_cell)
+		enemies[next_cell] = enemy
+
+	TurnManager.end_enemy_turn()
+
+
+func get_dragon_moves(pos: Vector2i, tilemap: TileMapLayer) -> Array:
+	var possible = []
+	var directions = [
+		TileSet.CELL_NEIGHBOR_BOTTOM_RIGHT_SIDE,
+		TileSet.CELL_NEIGHBOR_BOTTOM_LEFT_SIDE,
+		TileSet.CELL_NEIGHBOR_TOP_LEFT_SIDE,
+		TileSet.CELL_NEIGHBOR_TOP_RIGHT_SIDE,
+		TileSet.CELL_NEIGHBOR_TOP_SIDE,
+		TileSet.CELL_NEIGHBOR_BOTTOM_SIDE
+	]
+	for d in directions:
+		possible.append_array(generate(pos, d, tilemap, []))
+	return possible
+
+func generate(cell: Vector2i, dir: int, tilemap: TileMapLayer, res: Array) -> Array:
+	if tilemap.get_cell_source_id(tilemap.get_neighbor_cell(cell, dir)) != -1:
+		var new_cell = tilemap.get_neighbor_cell(cell, dir)
+		res.append(new_cell)
+		generate(new_cell, dir, tilemap, res)
+	return res
+		
+
+func _get_orc_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMapLayer) -> Vector2i:
+	var reachable = get_orc_moves(from, tilemap)
+	var best = from
+	var best_dist = _hex_distance(from, to)
+	for n in reachable:
+		if enemies.has(n):
+			continue
+		var d = _hex_distance(n, to)
+		if d < best_dist:
+			best_dist = d
+			best = n
+	return best
+
+func get_orc_moves(pos: Vector2i, tilemap: TileMapLayer) -> Array:
+	var possible = []
+	var directions = [
+		Vector2i.RIGHT,
+		Vector2i.LEFT, 
+		Vector2i.UP,   
+		Vector2i.DOWN,  
+	]
+	for d in directions:
+		possible.append_array(generate_orc(pos, d, tilemap, []))
+	return possible
+
+func generate_orc(cell: Vector2i, dir: Vector2i, tilemap: TileMapLayer, res: Array) -> Array:
+	if tilemap.get_cell_source_id(cell + dir) != -1:
+		var new_cell = cell + dir
+		res.append(new_cell)
+		generate_orc(new_cell, dir, tilemap, res)
+	return res
+		
