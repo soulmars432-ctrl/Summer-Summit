@@ -9,6 +9,8 @@ const highlightcoords = Vector2i(0, 0)
 
 func _ready() -> void:
 	TurnManager.turn_started.connect(_on_turn_started)
+	EnemyManager.tilemap = tilemap
+	EnemyManager.player = self
 	TurnManager.start_player_turn()
 
 func _on_turn_started(state) -> void:
@@ -33,7 +35,7 @@ func _clear_highlights() -> void:
 		highlightred.erase_cell(0, n)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if TurnManager.state != Turnmanager.State.Playerturn:
+	if TurnManager.state != TurnManager.State.Playerturn:
 		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var clicked_cell = tilemap.local_to_map(tilemap.to_local(get_global_mouse_position()))

@@ -1,6 +1,19 @@
 extends Node
 
 var enemies: Dictionary = {}
+var tilemap: TileMap
+var player: Playercontroller
+var enemy_scene: PackedScene = preload("res://hex stuff/enemy.tscn")
+var pending_spawn_cells: Array = []
+signal wave_incoming(spawn_cells)
+signal wave_started
+
+func _ready() -> void:
+	TurnManager.turn_started.connect(_on_turn_started)
+
+func _on_turn_started(state) -> void:
+	if state == TurnManager.State.Enemyturn:
+		step_enemies_toward_player(player.cell, tilemap)
 
 func register_enemy(enemy: Node2D, cell: Vector2i) -> void:
 	enemies[cell] = enemy
@@ -64,3 +77,24 @@ func _hex_distance(a: Vector2i, b: Vector2i) -> int:
 	var dq = axial_b.x - axial_a.x
 	var dr = axial_b.y - axial_a.y
 	return (abs(dq) + abs(dr) + abs(dq + dr)) / 2
+
+func announce_next_wave(count: int, valid_cells: Array, exclude: Array = []) -> void:
+	pending_spawn_cells.clear()
+	var candidates = valid_cells.duplicate()
+	candidates.shuffle()
+	for c in candidates:
+		if pending_spawn_cells.size() >= count:
+			break
+		if c in exclude:
+			continue
+		pending_spawn_cells.append(c)
+	wave_incoming.emit(pending_spawn_cells)
+
+func spawn_pending_wave(tilemap: TileMap, parent: Node) -> void:
+	for cell in pending_spawn_cells:
+		var enemy = enemy_scene.instantiate()
+		parent.add_child(enemy)
+		enemy.place_at(cell, tilemap)
+		register_enemy(enemy, cell)
+	pending_spawn_cells.clear()
+	wave_started.emit()

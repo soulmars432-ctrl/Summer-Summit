@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://hg57ccm3kfoh"]
 
 [ext_resource type="Texture2D" uid="uid://chcl41b6cchj" path="res://hex stuff/hextile.png" id="1_ei64t"]
+[ext_resource type="Script" uid="uid://cu5cxxyyte5i6" path="res://hex stuff/hexmap.gd" id="1_ffuv8"]
 [ext_resource type="PackedScene" uid="uid://bbe30hps30tvu" path="res://player.tscn" id="2_i5lwy"]
 [ext_resource type="FontFile" uid="uid://c1sxqk3386riu" path="res://hex stuff/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf" id="3_fc8ok"]
 [ext_resource type="Script" uid="uid://cprmevwyv26gh" path="res://hex stuff/actions.gd" id="3_mu5m0"]
@@ -50,7 +51,9 @@ tile_offset_axis = 1
 tile_size = Vector2i(128, 111)
 sources/1 = SubResource("TileSetAtlasSource_4ed8p")
 
-[node name="Node2D" type="Node2D" unique_id=1279603025]
+[node name="Node2D" type="Node2D" unique_id=1279603025 node_paths=PackedStringArray("tilemap")]
+script = ExtResource("1_ffuv8")
+tilemap = NodePath("TileMap")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=114593868]
 offset = Vector2(56, 56)
