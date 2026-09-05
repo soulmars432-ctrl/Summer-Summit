@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var tilemap: TileMap
+@export var tilemap: TileMapLayer
 
 func _ready() -> void:
 	await get_tree().process_frame

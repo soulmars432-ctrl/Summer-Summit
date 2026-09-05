@@ -6,6 +6,6 @@ var just_spawned: bool = true
 @export var is_dragon: bool = false
 @export var is_orc: bool = false
 
-func place_at(new_cell: Vector2i, tilemap: TileMap) -> void:
+func place_at(new_cell: Vector2i, tilemap: TileMapLayer) -> void:
 	cell = new_cell
 	position = tilemap.map_to_local(new_cell)

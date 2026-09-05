@@ -41,7 +41,7 @@ sources/0 = SubResource("TileSetAtlasSource_fc8ok")
 
 [node name="Node2D" type="Node2D" unique_id=1279603025 node_paths=PackedStringArray("tilemap")]
 script = ExtResource("1_ffuv8")
-tilemap = NodePath("TileMap")
+tilemap = NodePath("layer")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=114593868]
 offset = Vector2(56, 56)
@@ -136,3 +136,5 @@ offset_top = 200.0
 offset_right = 224.0
 offset_bottom = 280.0
 text = "Restart"
+
+[node name="enemies" type="Node2D" parent="." unique_id=1291798679]

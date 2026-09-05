@@ -5,6 +5,7 @@
 
 [node name="Enemy" type="Node2D" unique_id=1320795149]
 script = ExtResource("1_4n7gc")
+is_dragon = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1897728430]
 scale = Vector2(2, 2)

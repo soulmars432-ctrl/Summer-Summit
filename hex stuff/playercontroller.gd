@@ -21,17 +21,6 @@ func _on_turn_started(state) -> void:
 
 func _highlight_valid_moves() -> void:
 	_clear_highlights()
-
-	for enemy_cell in EnemyManager.enemies.keys():
-		if tilemap.get_used_cells(0).has(enemy_cell):
-			highlightred.set_cell(0, enemy_cell, 0, highlightcoords)
-		
-		for danger_cell in EnemyManager.get_orc_moves(enemy_cell, layer):
-			if not tilemap.get_used_cells(0).has(danger_cell):
-				continue
-			if not EnemyManager.enemies.has(danger_cell):
-				highlightred.set_cell(0, danger_cell, 0, highlightcoords)
-	
 	var neighbors = tilemap.get_surrounding_cells(cell)
 	for n in neighbors:
 		if not tilemap.get_used_cells(0).has(n):
@@ -39,6 +28,28 @@ func _highlight_valid_moves() -> void:
 		var enemy = EnemyManager.get_enemy_at(n)
 		if not enemy:
 			highlightgreen.set_cell(0, n, 0, highlightcoords)
+
+	for enemy_cell in EnemyManager.enemies.keys():
+		if tilemap.get_used_cells(0).has(enemy_cell):
+			highlightred.set_cell(0, enemy_cell, 0, highlightcoords)
+
+		var enemy = EnemyManager.get_enemy_at(enemy_cell)
+		if not enemy:
+			continue
+
+		var danger_cells: Array = []
+		if enemy.is_orc:
+			danger_cells = EnemyManager.get_orc_moves(enemy_cell, layer)
+		elif enemy.is_dragon:
+			danger_cells = EnemyManager.get_dragon_moves(enemy_cell, layer)
+		else:
+			danger_cells = tilemap.get_surrounding_cells(enemy_cell)
+
+		for danger_cell in danger_cells:
+			if not tilemap.get_used_cells(0).has(danger_cell):
+				continue
+			if not EnemyManager.enemies.has(danger_cell):
+				highlightred.set_cell(0, danger_cell, 0, highlightcoords)
 
 func _clear_highlights() -> void:
 	for n in highlightgreen.get_used_cells(0):
