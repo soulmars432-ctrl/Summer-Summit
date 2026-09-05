@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://1xng4papw8hd" path="res://hex stuff/d4.png" id="7_7nkik"]
 [ext_resource type="Texture2D" uid="uid://y6qukj42itgb" path="res://hex stuff/d5.png" id="8_nuo3n"]
 [ext_resource type="Texture2D" uid="uid://hos71q1o228s" path="res://hex stuff/d6.png" id="9_dr6jq"]
+[ext_resource type="Script" uid="uid://bcov6g18r0j5w" path="res://hex stuff/gameover.gd" id="12_mxfnm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5lwy"]
 texture = ExtResource("1_ei64t")
@@ -111,3 +112,30 @@ horizontal_alignment = 1
 [node name="Die" type="Sprite2D" parent="UI" unique_id=1428179529]
 position = Vector2(128, 160)
 scale = Vector2(5, 5)
+
+[node name="GameOver" type="Control" parent="." unique_id=380529899]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_mxfnm")
+
+[node name="Label" type="Label" parent="GameOver" unique_id=11949591]
+layout_mode = 0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 224.0
+offset_bottom = -20.0
+theme_override_fonts/font = ExtResource("3_fc8ok")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="GameOver" unique_id=1811325502]
+process_mode = 3
+layout_mode = 0
+offset_left = -100.0
+offset_top = 200.0
+offset_right = 224.0
+offset_bottom = 280.0
+text = "Restart"

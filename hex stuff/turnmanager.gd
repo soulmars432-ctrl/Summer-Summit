@@ -20,7 +20,7 @@ func start_player_turn() -> void:
 	turn_started.emit(state)
 	var roll = rolldie()
 	roll_requested.emit(roll)
-	await get_tree().create_timer(1.6).timeout
+	await get_tree().create_timer(1.6, false).timeout
 	actions_remaining = roll
 	state = State.Playerturn
 	turn_started.emit(state)
