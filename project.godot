@@ -11,9 +11,20 @@ config_version=5
 [application]
 
 config/name="summit"
-run/main_scene="uid://682xsmnt24y1"
+run/main_scene="uid://hg57ccm3kfoh"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+TurnManager="*uid://crrqcsdm5vtux"
+EnemyManager="*uid://da5wihj8kbihm"
+GameManager="*uid://bp4l7cah1nr45"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [input]
 
