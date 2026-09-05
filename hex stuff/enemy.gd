@@ -2,6 +2,7 @@ extends Node2D
 class_name Enemy
 
 var cell: Vector2i
+var just_spawned: bool = true
 @export var is_dragon: bool = false
 
 func place_at(new_cell: Vector2i, tilemap: TileMap) -> void:

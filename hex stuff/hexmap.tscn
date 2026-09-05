@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://chcl41b6cchj" path="res://hex stuff/hextile.png" id="1_ei64t"]
 [ext_resource type="Script" uid="uid://cu5cxxyyte5i6" path="res://hex stuff/hexmap.gd" id="1_ffuv8"]
 [ext_resource type="PackedScene" uid="uid://bbe30hps30tvu" path="res://player.tscn" id="2_i5lwy"]
+[ext_resource type="Script" uid="uid://fn8mg0nkdbic" path="res://hex stuff/marker.gd" id="3_7nkik"]
 [ext_resource type="FontFile" uid="uid://c1sxqk3386riu" path="res://hex stuff/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf" id="3_fc8ok"]
 [ext_resource type="Script" uid="uid://cprmevwyv26gh" path="res://hex stuff/actions.gd" id="3_mu5m0"]
 [ext_resource type="Texture2D" uid="uid://c4qsf6aidwafd" path="res://hex stuff/d1.png" id="4_ei8ir"]
@@ -76,6 +77,10 @@ layer_0/tile_data = PackedInt32Array(-196608, 1, 0, -131073, 1, 0, -65538, 1, 0,
 tilemap = NodePath("../TileMap")
 highlightgreen = NodePath("../Highlightgreen")
 highlightred = NodePath("../Highlightred")
+
+[node name="Marker" type="Node2D" parent="." unique_id=686776827 node_paths=PackedStringArray("tilemap")]
+script = ExtResource("3_7nkik")
+tilemap = NodePath("../TileMap")
 
 [node name="UI" type="Node2D" parent="." unique_id=1919692476 node_paths=PackedStringArray("die_sprite", "actions_label")]
 position = Vector2(-600, 128)

@@ -4,10 +4,10 @@ extends Node2D
 
 func _ready() -> void:
 	await get_tree().process_frame
-	var test_enemy = preload("res://hex stuff/enemy.tscn").instantiate()
-	EnemyManager.enemy_parent = self
-	var round = 1
-	add_child(test_enemy)
-	var spawn_cell = Vector2i(1, 2)
-	test_enemy.place_at(spawn_cell, tilemap)
-	EnemyManager.register_enemy(test_enemy, spawn_cell)
+	var first_wave_cells = [Vector2i(-3, -2), Vector2i(-3, 1), Vector2i(3, -2), Vector2i(3, 1)]
+	for cell in first_wave_cells:
+		var enemy = preload("res://hex stuff/enemy.tscn").instantiate()
+		add_child(enemy)
+		enemy.place_at(cell, tilemap)
+		enemy.just_spawned = false
+		EnemyManager.register_enemy(enemy, cell)

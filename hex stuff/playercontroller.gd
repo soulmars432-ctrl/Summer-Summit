@@ -11,6 +11,7 @@ func _ready() -> void:
 	TurnManager.turn_started.connect(_on_turn_started)
 	EnemyManager.tilemap = tilemap
 	EnemyManager.player = self
+	EnemyManager.enemy_parent = get_tree().current_scene
 	TurnManager.start_player_turn()
 
 func _on_turn_started(state) -> void:

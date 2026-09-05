@@ -7,6 +7,8 @@ var player: Playercontroller
 var goblin_scene: PackedScene = preload("res://hex stuff/enemy.tscn")
 var dragon_scene: PackedScene = preload("res://hex stuff/dragon.tscn")
 var pending_spawn_cells: Array = []
+var wave_announced_this_turn: bool = false
+var wave_cleared_pending: bool = false
 signal wave_incoming(spawn_cells)
 signal wave_started
 
@@ -23,6 +25,12 @@ func step_all_enemies_toward_player(player_cell: Vector2i, tilemap: TileMap) -> 
 
 	for cell in old_positions.keys():
 		var enemy = old_positions[cell]
+
+		if enemy.just_spawned:
+			enemy.just_spawned = false
+			enemies[cell] = enemy
+			continue
+
 		var next_cell: Vector2i
 		if enemy.is_dragon:
 			next_cell = _get_dragon_step_toward(cell, player_cell, tilemap)
@@ -51,15 +59,13 @@ func kill(enemy: Node2D) -> void:
 		enemies.erase(cell)
 	enemy.queue_free()
 	GameManager.add_score()
-
 	if enemies.is_empty():
-		_on_wave_cleared()
+		wave_cleared_pending = true
 
 func _on_wave_cleared() -> void:
 	var valid_cells = tilemap.get_used_cells(0)
-	var exclude_cells = [player.cell]
-	exclude_cells.append_array(tilemap.get_surrounding_cells(player.cell))
-	announce_next_wave(4, valid_cells, exclude_cells)
+	announce_next_wave(4, valid_cells)
+	wave_announced_this_turn = true
 
 func _find_cell_for(enemy: Node2D):
 	for c in enemies.keys():
@@ -152,17 +158,21 @@ func announce_next_wave(count: int, valid_cells: Array, exclude: Array = []) -> 
 	wave_incoming.emit(pending_spawn_cells)
 
 func spawn_pending_wave() -> void:
-	var forbidden = [player.cell]
-	forbidden.append_array(tilemap.get_surrounding_cells(player.cell))
-
 	for cell in pending_spawn_cells:
-		if cell in forbidden:
-			continue
 		var scene = dragon_scene if randf() < 0.3 else goblin_scene
 		var enemy = scene.instantiate()
 		enemy_parent.add_child(enemy)
 		enemy.place_at(cell, tilemap)
 		register_enemy(enemy, cell)
 
+		if cell == player.cell:
+			GameManager.player_died()
 	pending_spawn_cells.clear()
 	wave_started.emit()
+		
+func try_announce_wave_if_cleared() -> void:
+	if wave_cleared_pending:
+		var valid_cells = tilemap.get_used_cells(0)
+		announce_next_wave(4, valid_cells)
+		wave_cleared_pending = false
+		wave_announced_this_turn = true

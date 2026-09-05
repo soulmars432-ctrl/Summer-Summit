@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://8johh4jxstf5"]
+
+[ext_resource type="Texture2D" uid="uid://cxjd00dmmw10s" path="res://hex stuff/cross_mark.png" id="1_6mx70"]
+
+[node name="Marker" type="Node2D" unique_id=449214321]
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1148438314]
+texture = ExtResource("1_6mx70")
