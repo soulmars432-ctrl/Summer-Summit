@@ -16,10 +16,7 @@ func _on_turn_started(state) -> void:
 		_highlight_valid_moves()
 
 func _highlight_valid_moves() -> void:
-	print("layer enabled: ", highlightgreen.is_layer_enabled(0))
-	print("layer modulate: ", highlightgreen.get_layer_modulate(0))
-	print("layer z_index: ", highlightgreen.get_layer_z_index(0))
-	print("layer y_sort: ", highlightgreen.is_layer_y_sort_enabled(0))
+	var source = highlightgreen.tile_set.get_source(0) as TileSetAtlasSource
 	_clear_highlights()
 	var neighbors = tilemap.get_surrounding_cells(cell)
 	for n in neighbors:
@@ -52,6 +49,13 @@ func _try_resolve_click(target: Vector2i) -> void:
 		_attack(enemy)
 	else:
 		_move_to(target)
+
+	TurnManager.spend_action()
+
+	if TurnManager.actions_remaining > 0:
+		_highlight_valid_moves()
+	else:
+		_clear_highlights()
 
 	TurnManager.spend_action()
 
