@@ -21,8 +21,8 @@ func _on_restart_pressed() -> void:
 	get_tree().reload_current_scene()
 
 func _clear_all_highlights_on_restart() -> void:
-	var green = get_node("Highlightgreen")
-	var red = get_node("Highlightred")
+	var green = get_node("../Highlightgreen")
+	var red = get_node("../Highlightred")
 	for n in green.get_used_cells(0):
 		green.erase_cell(0, n)
 	for n in red.get_used_cells(0):

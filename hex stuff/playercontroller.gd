@@ -30,7 +30,19 @@ func _highlight_valid_moves() -> void:
 	for enemy_cell in EnemyManager.enemies.keys():
 		if tilemap.get_used_cells(0).has(enemy_cell):
 			highlightred.set_cell(0, enemy_cell, 0, highlightcoords)
-		for danger_cell in tilemap.get_surrounding_cells(enemy_cell):
+
+		var enemy_node = EnemyManager.get_enemy_at(enemy_cell)
+		if not is_instance_valid(enemy_node):
+			EnemyManager.enemies.erase(enemy_cell)
+			continue
+
+		var danger_cells = []
+		if enemy_node.is_dragon:
+			danger_cells = EnemyManager.get_line_cells(enemy_cell, tilemap)
+		else:
+			danger_cells = tilemap.get_surrounding_cells(enemy_cell)
+
+		for danger_cell in danger_cells:
 			if not tilemap.get_used_cells(0).has(danger_cell):
 				continue
 			if not EnemyManager.enemies.has(danger_cell):
