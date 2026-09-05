@@ -1,17 +1,15 @@
 extends Area2D
 
-@export var area:TileMapLayer
+@export var board:TileMapLayer
 
-func _process(delta: float) -> void:
-	var movement:int = randi_range(1,6)
+func _physics_process (_delta: float) -> void:
 	if Input.is_action_just_pressed("left_click"):
-		var mouse_pos = get_global_mouse_position()
-		if legal_move(mouse_pos,area.position, 8):
-			position = mouse_pos.snapped(Vector2(128,128))
+		if is_on_board(get_global_mouse_position(), board):
+			global_position = board.map_to_local(board.local_to_map(get_global_mouse_position())) 
 
 
-func legal_move(mouse_pos:Vector2, start_pos:Vector2, side:int):
-	if mouse_pos.x < start_pos.x or mouse_pos.y < start_pos.y or mouse_pos.x > (start_pos.x + (side*128)) or mouse_pos.y > (start_pos.y + (side*128)):
+func is_on_board(pos: Vector2, board:TileMapLayer) -> bool:
+	if board.get_cell_source_id(board.local_to_map(board.to_local(pos))) == -1:
 		return false
 	else:
 		return true
