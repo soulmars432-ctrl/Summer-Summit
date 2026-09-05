@@ -3,13 +3,10 @@
 [ext_resource type="Script" uid="uid://cjdcncqiyeb1l" path="res://hex stuff/playercontroller.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://ch6fhylg65u70" path="res://hex stuff/mage.png" id="2_i3pqv"]
 
-[node name="Player" type="Node2D" unique_id=685893003 node_paths=PackedStringArray("tilemap", "highlightgreen", "highlightred")]
+[node name="Player" type="Node2D" unique_id=685893003]
 position = Vector2(64, 56)
 scale = Vector2(2, 2)
 script = ExtResource("1_onrkg")
-tilemap = NodePath("")
-highlightgreen = NodePath("")
-highlightred = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1633321585]
 texture = ExtResource("2_i3pqv")
