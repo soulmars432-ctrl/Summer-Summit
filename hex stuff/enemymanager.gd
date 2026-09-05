@@ -34,6 +34,8 @@ func step_all_enemies_toward_player(player_cell: Vector2i, tilemap: TileMap) -> 
 		var next_cell: Vector2i
 		if enemy.is_dragon:
 			next_cell = _get_dragon_step_toward(cell, player_cell, tilemap)
+		elif enemy.is_orc:
+			next_cell = _get_orc_step_toward(cell, player_cell, tilemap)
 		else:
 			next_cell = _get_step_toward(cell, player_cell, tilemap)
 
@@ -62,11 +64,6 @@ func kill(enemy: Node2D) -> void:
 	if enemies.is_empty():
 		wave_cleared_pending = true
 
-func _on_wave_cleared() -> void:
-	var valid_cells = tilemap.get_used_cells(0)
-	announce_next_wave(4, valid_cells)
-	wave_announced_this_turn = true
-
 func _find_cell_for(enemy: Node2D):
 	for c in enemies.keys():
 		if enemies[c] == enemy:
@@ -87,7 +84,7 @@ func _get_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMap) -> Vector2
 			best_dist = d
 			best = n
 	return best
-
+	
 func has_pending_wave() -> bool:
 	return not pending_spawn_cells.is_empty()
 
@@ -111,16 +108,19 @@ func _get_dragon_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMap) -> 
 		return axial_to_offset(one_step_axial)
 	return from
 
+func _get_orc_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMap) -> Vector2i:
+	return _get_step_toward(from, to, tilemap)
+
 func offset_to_axial(cell: Vector2i) -> Vector2i:
 	var q = cell.x
 	var r = cell.y - (cell.x - (cell.x & 1)) / 2
 	return Vector2i(q, r)
-	
+
 func axial_to_offset(axial: Vector2i) -> Vector2i:
 	var col = axial.x
 	var row = axial.y + (axial.x - (axial.x & 1)) / 2
 	return Vector2i(col, row)
-	
+
 const hexdir = [
 	Vector2i(1, 0), Vector2i(1, -1), Vector2i(0, -1),
 	Vector2i(-1, 0), Vector2i(-1, 1), Vector2i(0, 1)
@@ -167,9 +167,10 @@ func spawn_pending_wave() -> void:
 
 		if cell == player.cell:
 			GameManager.player_died()
+
 	pending_spawn_cells.clear()
 	wave_started.emit()
-		
+
 func try_announce_wave_if_cleared() -> void:
 	if wave_cleared_pending:
 		var valid_cells = tilemap.get_used_cells(0)

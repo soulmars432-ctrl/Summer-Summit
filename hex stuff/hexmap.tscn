@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://hg57ccm3kfoh"]
+[gd_scene format=4 uid="uid://hg57ccm3kfoh"]
 
 [ext_resource type="Texture2D" uid="uid://chcl41b6cchj" path="res://hex stuff/hextile.png" id="1_ei64t"]
 [ext_resource type="Script" uid="uid://cu5cxxyyte5i6" path="res://hex stuff/hexmap.gd" id="1_ffuv8"]
@@ -53,6 +53,11 @@ tile_set = SubResource("TileSet_ei64t")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 2, 0, -65536, 2, 0, -1, 2, 0, 65535, 2, 0, 65536, 2, 0, 1, 2, 0, -65535, 2, 0, -131071, 2, 0, -131072, 2, 0, -65537, 2, 0, -2, 2, 0, 65534, 2, 0, 131070, 2, 0, 131071, 2, 0, 131072, 2, 0, 65537, 2, 0, 2, 2, 0, -65534, 2, 0, 65538, 2, 0, -196608, 2, 0, -131073, 2, 0, -65538, 2, 0, -65539, 2, 0, -3, 2, 0, 65533, 2, 0, 131069, 2, 0, 196606, 2, 0, 196607, 2, 0, 196608, 2, 0, 131073, 2, 0, 131074, 2, 0, 65539, 2, 0, 3, 2, 0, -65533, 2, 0, -131069, 2, 0, -131070, 2, 0, -196607, 2, 0)
 
+[node name="layer" type="TileMapLayer" parent="." unique_id=290644159]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD9/wEAAgAAAAAAAAD+/wIAAgAAAAAAAAD//wIAAgAAAAAAAAAAAAMAAgAAAAAAAAABAAIAAgAAAAAAAAACAAIAAgAAAAAAAAADAAEAAgAAAAAAAAD//wEAAgAAAAAAAAD+/wEAAgAAAAAAAAD9/wAAAgAAAAAAAAAAAAIAAgAAAAAAAAABAAEAAgAAAAAAAAACAAEAAgAAAAAAAAADAAAAAgAAAAAAAAD9////AgAAAAAAAAD+/wAAAgAAAAAAAAD//wAAAgAAAAAAAAAAAAEAAgAAAAAAAAABAAAAAgAAAAAAAAACAAAAAgAAAAAAAAADAP//AgAAAAAAAAD9//7/AgAAAAAAAAD+////AgAAAAAAAAD/////AgAAAAAAAAAAAAAAAgAAAAAAAAABAP//AgAAAAAAAAACAP//AgAAAAAAAAADAP7/AgAAAAAAAAD+//7/AgAAAAAAAAD///7/AgAAAAAAAAAAAP//AgAAAAAAAAABAP7/AgAAAAAAAAACAP7/AgAAAAAAAAD///3/AgAAAAAAAAAAAP7/AgAAAAAAAAAAAP3/AgAAAAAAAAABAP3/AgAAAAAAAAA=")
+tile_set = SubResource("TileSet_ei64t")
+
 [node name="Highlightgreen" type="TileMap" parent="." unique_id=1955941178]
 modulate = Color(0.6, 0.8980392, 0.3137255, 1)
 z_index = 1
@@ -73,10 +78,11 @@ layer_0/modulate = Color(0.6745098, 0.19607843, 0.19607843, 1)
 layer_0/z_index = 1
 layer_0/tile_data = PackedInt32Array(-196608, 1, 0, -131073, 1, 0, -65538, 1, 0, -65539, 1, 0, -3, 1, 0, -2, 1, 0, -65537, 1, 0, -131072, 1, 0, -196607, 1, 0, -131070, 1, 0, -131069, 1, 0, -65533, 1, 0, -65534, 1, 0, -131071, 1, 0, -65536, 1, 0, -65535, 1, 0, 2, 1, 0, 3, 1, 0, 65538, 1, 0, 65539, 1, 0, 1, 1, 0, 0, 1, 0, -1, 1, 0, 65536, 1, 0, 65535, 1, 0, 65534, 1, 0, 65537, 1, 0, 131074, 1, 0, 131073, 1, 0, 131072, 1, 0, 131071, 1, 0, 131070, 1, 0, 65533, 1, 0, 131069, 1, 0, 196606, 1, 0, 196607, 1, 0, 196608, 1, 0)
 
-[node name="Player" parent="." unique_id=685893003 node_paths=PackedStringArray("tilemap", "highlightgreen", "highlightred") instance=ExtResource("2_i5lwy")]
+[node name="Player" parent="." unique_id=685893003 node_paths=PackedStringArray("tilemap", "highlightgreen", "highlightred", "layer") instance=ExtResource("2_i5lwy")]
 tilemap = NodePath("../TileMap")
 highlightgreen = NodePath("../Highlightgreen")
 highlightred = NodePath("../Highlightred")
+layer = NodePath("../layer")
 
 [node name="Marker" type="Node2D" parent="." unique_id=686776827 node_paths=PackedStringArray("tilemap")]
 script = ExtResource("3_7nkik")
