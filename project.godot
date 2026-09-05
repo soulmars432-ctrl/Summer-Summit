@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 TurnManager="*uid://crrqcsdm5vtux"
 EnemyManager="*uid://da5wihj8kbihm"
 GameManager="*uid://bp4l7cah1nr45"
+Sound="*uid://bd13qr8asnw0i"
 
 [display]
 
