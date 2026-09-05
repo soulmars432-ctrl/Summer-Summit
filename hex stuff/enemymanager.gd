@@ -135,7 +135,14 @@ func _get_dragon_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMapLayer
 		if d < best_dist:
 			best_dist = d
 			best = n
-	return best
+	var from_axial = offset_to_axial(from)
+	var best_axial = offset_to_axial(best)
+	var diff = best_axial - from_axial
+	if diff != Vector2i.ZERO:
+		var step_dir = Vector2i(sign(diff.x), sign(diff.y))
+		var one_step_axial = from_axial + step_dir
+		return axial_to_offset(one_step_axial)
+	return from
 
 func offset_to_axial(cell: Vector2i) -> Vector2i:
 	var q = cell.x
