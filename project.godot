@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="summit"
-run/main_scene="uid://hg57ccm3kfoh"
+run/main_scene="uid://bdv2to8ulk3j1"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
