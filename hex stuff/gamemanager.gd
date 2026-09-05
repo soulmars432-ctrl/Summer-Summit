@@ -17,4 +17,3 @@ func player_died() -> void:
 		return
 	is_game_over = true
 	game_over.emit(score)
-	# freeze input, game over

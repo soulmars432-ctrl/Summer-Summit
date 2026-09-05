@@ -38,20 +38,6 @@ tile_offset_axis = 1
 tile_size = Vector2i(128, 111)
 sources/0 = SubResource("TileSetAtlasSource_fc8ok")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mu5m0"]
-load_path = "res://.godot/imported/hextile.png-40b47a6a3d87cb536778ab02d3530787.ctex"
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ed8p"]
-texture = SubResource("CompressedTexture2D_mu5m0")
-texture_region_size = Vector2i(128, 111)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_mu5m0"]
-tile_shape = 3
-tile_offset_axis = 1
-tile_size = Vector2i(128, 111)
-sources/1 = SubResource("TileSetAtlasSource_4ed8p")
-
 [node name="Node2D" type="Node2D" unique_id=1279603025 node_paths=PackedStringArray("tilemap")]
 script = ExtResource("1_ffuv8")
 tilemap = NodePath("TileMap")
@@ -76,15 +62,15 @@ layer_0/modulate = Color(0.6, 0.8980392, 0.3137255, 1)
 layer_0/z_index = 1
 layer_0/tile_data = PackedInt32Array(-196608, 1, 0, -131073, 1, 0, -65538, 1, 0, -65539, 1, 0, -3, 1, 0, -2, 1, 0, -65537, 1, 0, -131072, 1, 0, -196607, 1, 0, -131070, 1, 0, -131069, 1, 0, -65533, 1, 0, -65534, 1, 0, -131071, 1, 0, -65536, 1, 0, -65535, 1, 0, 2, 1, 0, 3, 1, 0, 65538, 1, 0, 65539, 1, 0, 1, 1, 0, 0, 1, 0, -1, 1, 0, 65536, 1, 0, 65535, 1, 0, 65534, 1, 0, 65537, 1, 0, 131074, 1, 0, 131073, 1, 0, 131072, 1, 0, 131071, 1, 0, 131070, 1, 0, 65533, 1, 0, 131069, 1, 0, 196606, 1, 0, 196607, 1, 0, 196608, 1, 0)
 
-[node name="Highlightred" type="TileMap" parent="." unique_id=1767634295]
+[node name="Highlightred" type="TileMap" parent="." unique_id=427231872]
 modulate = Color(0.6745098, 0.19607843, 0.19607843, 1)
 z_index = 1
 texture_filter = 1
-tile_set = SubResource("TileSet_mu5m0")
+tile_set = SubResource("TileSet_4ed8p")
 format = 2
 layer_0/modulate = Color(0.6745098, 0.19607843, 0.19607843, 1)
 layer_0/z_index = 1
-layer_0/tile_data = PackedInt32Array(-196608, 0, 0, -131073, 0, 0, -65538, 0, 0, -65539, 0, 0, -3, 0, 0, 65534, 0, 0, -2, 0, 0, -65537, 0, 0, -131072, 0, 0, -196607, 0, 0, -65536, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -65533, 0, 0, 2, 0, 0, -65534, 0, 0, -65535, 0, 0, 1, 0, 0, 65536, 0, 0, 0, 0, 0, -1, 0, 0, 65535, 0, 0, 131070, 0, 0, 65533, 0, 0, 131069, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131071, 0, 0, 65537, 0, 0, 65538, 0, 0, 3, 0, 0, 65539, 0, 0, 131074, 0, 0, 131073, 0, 0, 196608, 0, 0)
+layer_0/tile_data = PackedInt32Array(-196608, 1, 0, -131073, 1, 0, -65538, 1, 0, -65539, 1, 0, -3, 1, 0, -2, 1, 0, -65537, 1, 0, -131072, 1, 0, -196607, 1, 0, -131070, 1, 0, -131069, 1, 0, -65533, 1, 0, -65534, 1, 0, -131071, 1, 0, -65536, 1, 0, -65535, 1, 0, 2, 1, 0, 3, 1, 0, 65538, 1, 0, 65539, 1, 0, 1, 1, 0, 0, 1, 0, -1, 1, 0, 65536, 1, 0, 65535, 1, 0, 65534, 1, 0, 65537, 1, 0, 131074, 1, 0, 131073, 1, 0, 131072, 1, 0, 131071, 1, 0, 131070, 1, 0, 65533, 1, 0, 131069, 1, 0, 196606, 1, 0, 196607, 1, 0, 196608, 1, 0)
 
 [node name="Player" parent="." unique_id=685893003 node_paths=PackedStringArray("tilemap", "highlightgreen", "highlightred") instance=ExtResource("2_i5lwy")]
 tilemap = NodePath("../TileMap")

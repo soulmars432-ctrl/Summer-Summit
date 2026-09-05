@@ -56,9 +56,10 @@ func _get_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMap) -> Vector2
 	var neighbors = tilemap.get_surrounding_cells(from)
 	var best = from
 	var best_dist = _hex_distance(from, to)
-
 	for n in neighbors:
 		if enemies.has(n):
+			continue
+		if not tilemap.get_used_cells(0).has(n):
 			continue
 		var d = _hex_distance(n, to)
 		if d < best_dist:

@@ -18,16 +18,23 @@ func _on_turn_started(state) -> void:
 		_highlight_valid_moves()
 
 func _highlight_valid_moves() -> void:
-	var source = highlightgreen.tile_set.get_source(0) as TileSetAtlasSource
 	_clear_highlights()
 	var neighbors = tilemap.get_surrounding_cells(cell)
 	for n in neighbors:
+		if not tilemap.get_used_cells(0).has(n):
+			continue
 		var enemy = EnemyManager.get_enemy_at(n)
-		if enemy:
-			highlightred.set_cell(0, n, 0, highlightcoords)
-		else:
+		if not enemy:
 			highlightgreen.set_cell(0, n, 0, highlightcoords)
 
+	for enemy_cell in EnemyManager.enemies.keys():
+		if tilemap.get_used_cells(0).has(enemy_cell):
+			highlightred.set_cell(0, enemy_cell, 0, highlightcoords)
+		for danger_cell in tilemap.get_surrounding_cells(enemy_cell):
+			if not tilemap.get_used_cells(0).has(danger_cell):
+				continue
+			if not EnemyManager.enemies.has(danger_cell):
+				highlightred.set_cell(0, danger_cell, 0, highlightcoords)
 func _clear_highlights() -> void:
 	for n in highlightgreen.get_used_cells(0):
 		highlightgreen.erase_cell(0, n)
@@ -44,6 +51,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func _try_resolve_click(target: Vector2i) -> void:
 	var neighbors = tilemap.get_surrounding_cells(cell)
 	if not neighbors.has(target):
+		return
+	if not tilemap.get_used_cells(0).has(target):
 		return
 
 	var enemy = EnemyManager.get_enemy_at(target)
