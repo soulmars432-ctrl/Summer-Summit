@@ -1,8 +1,7 @@
-[gd_scene format=4 uid="uid://hg57ccm3kfoh"]
+[gd_scene format=3 uid="uid://hg57ccm3kfoh"]
 
 [ext_resource type="Texture2D" uid="uid://chcl41b6cchj" path="res://hex stuff/hextile.png" id="1_ei64t"]
-[ext_resource type="Script" uid="uid://cjdcncqiyeb1l" path="res://hex stuff/playercontroller.gd" id="2_i5lwy"]
-[ext_resource type="Texture2D" uid="uid://ch6fhylg65u70" path="res://hex stuff/mage.png" id="3_mu5m0"]
+[ext_resource type="PackedScene" uid="uid://bbe30hps30tvu" path="res://player.tscn" id="2_i5lwy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5lwy"]
 texture = ExtResource("1_ei64t")
@@ -75,13 +74,8 @@ layer_0/modulate = Color(0.6745098, 0.19607843, 0.19607843, 1)
 layer_0/z_index = 1
 layer_0/tile_data = PackedInt32Array(-196608, 0, 0, -131073, 0, 0, -65538, 0, 0, -65539, 0, 0, -3, 0, 0, 65534, 0, 0, -2, 0, 0, -65537, 0, 0, -131072, 0, 0, -196607, 0, 0, -65536, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -65533, 0, 0, 2, 0, 0, -65534, 0, 0, -65535, 0, 0, 1, 0, 0, 65536, 0, 0, 0, 0, 0, -1, 0, 0, 65535, 0, 0, 131070, 0, 0, 65533, 0, 0, 131069, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131071, 0, 0, 65537, 0, 0, 65538, 0, 0, 3, 0, 0, 65539, 0, 0, 131074, 0, 0, 131073, 0, 0, 196608, 0, 0)
 
-[node name="Player" type="Node2D" parent="." unique_id=2045060633 node_paths=PackedStringArray("tilemap", "highlightgreen", "highlightred")]
-position = Vector2(64, 56)
-scale = Vector2(2, 2)
-script = ExtResource("2_i5lwy")
+[node name="Player" parent="." unique_id=685893003 node_paths=PackedStringArray("tilemap", "highlightgreen", "highlightred") instance=ExtResource("2_i5lwy")]
+position = Vector2(-6, 6)
 tilemap = NodePath("../TileMap")
 highlightgreen = NodePath("../Highlightgreen")
 highlightred = NodePath("../Highlightred")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=699720671]
-texture = ExtResource("3_mu5m0")

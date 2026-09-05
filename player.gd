@@ -4,7 +4,7 @@ extends Area2D
 
 func _physics_process (_delta: float) -> void:
 	if Input.is_action_just_pressed("left_click"):
-		if is_on_board(get_global_mouse_position(), board):
+		if is_on_board(get_global_mouse_position(), board) and board.map_to_local(board.local_to_map(get_global_mouse_position())) in board.get_surrounding_cells(board.map_to_local(board.local_to_map(global_position))):
 			global_position = board.map_to_local(board.local_to_map(get_global_mouse_position())) 
 
 
