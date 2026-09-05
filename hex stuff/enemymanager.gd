@@ -67,42 +67,6 @@ func _find_cell_for(enemy: Node2D):
 			return c
 	return null
 
-func step_enemies_toward_player(player_cell: Vector2i, tilemap: TileMap) -> void:
-	var old_positions = enemies.duplicate()
-	enemies.clear()
-
-	for cell in old_positions.keys():
-		var enemy = old_positions[cell]
-		var next_cell = _get_step_toward(cell, player_cell, tilemap)
-
-		if next_cell == player_cell:
-			GameManager.player_died()
-			enemies[cell] = enemy
-			continue
-
-		enemy.position = tilemap.map_to_local(next_cell)
-		enemies[next_cell] = enemy
-
-	TurnManager.end_enemy_turn()
-	
-func step_dragon_toward_player(player_cell: Vector2i, tilemap: TileMap) -> void:
-	var old_positions = enemies.duplicate()
-	enemies.clear()
-
-	for cell in old_positions.keys():
-		var enemy = old_positions[cell]
-		var next_cell = _get_dragon_step_toward(cell, player_cell, tilemap)
-
-		if next_cell == player_cell:
-			GameManager.player_died()
-			enemies[cell] = enemy
-			continue
-
-		enemy.position = tilemap.map_to_local(next_cell)
-		enemies[next_cell] = enemy
-
-	TurnManager.end_enemy_turn()
-
 func _get_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMap) -> Vector2i:
 	var neighbors = tilemap.get_surrounding_cells(from)
 	var best = from
@@ -132,7 +96,14 @@ func _get_dragon_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMap) -> 
 		if d < best_dist:
 			best_dist = d
 			best = n
-	return best
+	var from_axial = offset_to_axial(from)
+	var best_axial = offset_to_axial(best)
+	var diff = best_axial - from_axial
+	if diff != Vector2i.ZERO:
+		var step_dir = Vector2i(sign(diff.x), sign(diff.y))
+		var one_step_axial = from_axial + step_dir
+		return axial_to_offset(one_step_axial)
+	return from
 
 func offset_to_axial(cell: Vector2i) -> Vector2i:
 	var q = cell.x
