@@ -77,8 +77,16 @@ func kill(enemy: Node2D) -> void:
 	for cell in cells:
 		enemies.erase(cell)
 		killed_cells.append(cell)
+
+	var points = 1
+	if enemy.is_orc:
+		points = 3
+	elif enemy.is_dragon:
+		points = 5
+
 	enemy.queue_free()
-	GameManager.add_score()
+	GameManager.add_score(points)
+
 	if enemies.is_empty():
 		wave_cleared_pending = true
 
@@ -158,12 +166,12 @@ func spawn_pending_wave() -> void:
 	for cell in pending_spawn_cells:
 		var rand = randf()
 		var scene = goblin_scene
-		if rand < 0.7 and rand > 0.4:
-			scene = dragon_scene
-		elif rand <= 0.4:
+		if rand < 0.5:
+			scene = goblin_scene
+		elif rand < 0.8:
 			scene = orc_scene
 		else:
-			scene = goblin_scene
+			scene = dragon_scene
 		var enemy = scene.instantiate()
 		enemy_parent.add_child(enemy)
 		enemy.place_at(cell, tilemap)
