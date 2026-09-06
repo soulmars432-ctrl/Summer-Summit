@@ -2,6 +2,7 @@ extends Node2D
 @export var die_sprite: Sprite2D
 @export var die_faces: Array[Texture2D]
 @export var actions_label: Label
+@onready var camera_2d: Camera2D = $"../Camera2D"
 
 func _ready() -> void:
 	TurnManager.turn_started.connect(_on_turn_started)
@@ -35,3 +36,4 @@ func _play_roll_animation(final_value: int) -> void:
 	
 	tween.tween_callback(func(): die_sprite.texture = die_faces[final_value - 1])
 	tween.tween_property(die_sprite, "rotation_degrees", 0, 0.15).set_trans(Tween.TRANS_BACK)
+	

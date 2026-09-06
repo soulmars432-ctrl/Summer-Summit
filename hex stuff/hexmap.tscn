@@ -9,7 +9,7 @@
 [ext_resource type="FontFile" uid="uid://c1sxqk3386riu" path="res://hex stuff/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf" id="3_fc8ok"]
 [ext_resource type="Script" uid="uid://cprmevwyv26gh" path="res://hex stuff/actions.gd" id="3_mu5m0"]
 [ext_resource type="Texture2D" uid="uid://bei58hknn7o13" path="res://hex stuff/d1.png" id="4_ei8ir"]
-[ext_resource type="Shader" path="res://hex stuff/hexmap.gdshader" id="4_hbit7"]
+[ext_resource type="Shader" uid="uid://bsjjg2xfcx55g" path="res://hex stuff/hexmap.gdshader" id="4_hbit7"]
 [ext_resource type="Texture2D" uid="uid://bolqmxja825wt" path="res://img/safe tile 2.png" id="4_v3wj0"]
 [ext_resource type="Texture2D" uid="uid://dtgq57m0vmyfb" path="res://hex stuff/d2.png" id="5_ffuv8"]
 [ext_resource type="Script" uid="uid://d21oc8k11wcyu" path="res://hex stuff/score.gd" id="5_nuo3n"]
@@ -54,18 +54,8 @@ texture = ExtResource("1_ei64t")
 texture_region_size = Vector2i(128, 111)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tkplo"]
-texture = ExtResource("8_6qy82")
-texture_region_size = Vector2i(128, 111)
-0:0/0 = 0
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7gnqv"]
 texture = ExtResource("4_v3wj0")
-texture_region_size = Vector2i(128, 111)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mhygs"]
-texture = ExtResource("9_3dl4x")
 texture_region_size = Vector2i(128, 111)
 0:0/0 = 0
 
@@ -76,8 +66,6 @@ tile_size = Vector2i(128, 111)
 sources/4 = SubResource("TileSetAtlasSource_i5lwy")
 sources/3 = SubResource("TileSetAtlasSource_6luq0")
 sources/6 = SubResource("TileSetAtlasSource_7gnqv")
-sources/5 = SubResource("TileSetAtlasSource_tkplo")
-sources/7 = SubResource("TileSetAtlasSource_mhygs")
 sources/0 = SubResource("TileSetAtlasSource_hbit7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hbit7"]
@@ -120,6 +108,16 @@ sources/3 = SubResource("TileSetAtlasSource_dhw3q")
 sources/2 = SubResource("TileSetAtlasSource_ypghl")
 sources/0 = SubResource("TileSetAtlasSource_5lit6")
 sources/1 = SubResource("TileSetAtlasSource_4lyrf")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tkplo"]
+texture = ExtResource("8_6qy82")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mhygs"]
+texture = ExtResource("9_3dl4x")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g403w"]
 texture = ExtResource("10_u6gt7")
