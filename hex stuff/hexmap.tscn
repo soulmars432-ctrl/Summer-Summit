@@ -4,11 +4,12 @@
 [ext_resource type="Script" uid="uid://cu5cxxyyte5i6" path="res://hex stuff/hexmap.gd" id="1_ffuv8"]
 [ext_resource type="Texture2D" uid="uid://d0o7ms871veds" path="res://img/ground_tile.png" id="2_dr6jq"]
 [ext_resource type="PackedScene" uid="uid://bbe30hps30tvu" path="res://player.tscn" id="2_i5lwy"]
-[ext_resource type="Script" path="res://hex stuff/marker.gd" id="3_7nkik"]
+[ext_resource type="Script" uid="uid://fn8mg0nkdbic" path="res://hex stuff/marker.gd" id="3_7nkik"]
 [ext_resource type="FontFile" uid="uid://c1sxqk3386riu" path="res://hex stuff/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf" id="3_fc8ok"]
 [ext_resource type="Script" uid="uid://cprmevwyv26gh" path="res://hex stuff/actions.gd" id="3_mu5m0"]
 [ext_resource type="Texture2D" uid="uid://bei58hknn7o13" path="res://hex stuff/d1.png" id="4_ei8ir"]
 [ext_resource type="Shader" uid="uid://bsjjg2xfcx55g" path="res://hex stuff/hexmap.gdshader" id="4_hbit7"]
+[ext_resource type="Texture2D" uid="uid://bolqmxja825wt" path="res://img/safe tile 2.png" id="4_v3wj0"]
 [ext_resource type="Texture2D" uid="uid://dtgq57m0vmyfb" path="res://hex stuff/d2.png" id="5_ffuv8"]
 [ext_resource type="Script" uid="uid://d21oc8k11wcyu" path="res://hex stuff/score.gd" id="5_nuo3n"]
 [ext_resource type="Texture2D" uid="uid://dkc8wd6q5o0wb" path="res://hex stuff/d3.png" id="6_mxfnm"]
@@ -31,8 +32,18 @@ texture_region_size = Vector2i(128, 111)
 1:2/0 = 0
 2:2/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6luq0"]
+texture = ExtResource("2_dr6jq")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5lwy"]
 texture = ExtResource("1_ei64t")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7gnqv"]
+texture = ExtResource("4_v3wj0")
 texture_region_size = Vector2i(128, 111)
 0:0/0 = 0
 
@@ -41,7 +52,9 @@ tile_shape = 3
 tile_offset_axis = 1
 tile_size = Vector2i(128, 111)
 sources/4 = SubResource("TileSetAtlasSource_i5lwy")
+sources/3 = SubResource("TileSetAtlasSource_6luq0")
 sources/2 = SubResource("TileSetAtlasSource_hbit7")
+sources/6 = SubResource("TileSetAtlasSource_7gnqv")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hbit7"]
 shader = ExtResource("4_hbit7")
@@ -95,10 +108,12 @@ zoom = Vector2(0.9, 0.9)
 [node name="TileMap" type="TileMap" parent="." unique_id=327923456]
 texture_filter = 1
 tile_set = SubResource("TileSet_ei64t")
+rendering_quadrant_size = 128
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 2, 0, -65536, 2, 0, -1, 2, 0, 65535, 2, 0, 65536, 2, 0, 1, 2, 0, -65535, 2, 0, -131071, 2, 0, -131072, 2, 0, -65537, 2, 0, -2, 2, 0, 65534, 2, 0, 131070, 2, 0, 131071, 2, 0, 131072, 2, 0, 65537, 2, 0, 2, 2, 0, -65534, 2, 0, 65538, 2, 0, -196608, 2, 0, -131073, 2, 0, -65538, 2, 0, -65539, 2, 0, -3, 2, 0, 65533, 2, 0, 131069, 2, 0, 196606, 2, 0, 196607, 2, 0, 196608, 2, 0, 131073, 2, 0, 131074, 2, 0, 65539, 2, 0, 3, 2, 0, -65533, 2, 0, -131069, 2, 0, -131070, 2, 0, -196607, 2, 0)
+layer_0/tile_data = PackedInt32Array(0, 6, 0, -65536, 6, 0, -1, 2, 0, 65535, 2, 0, 65536, 6, 0, 1, 2, 0, -65535, 2, 0, -131071, 2, 0, -131072, 2, 0, -65537, 2, 0, -2, 6, 0, 65534, 6, 0, 131070, 6, 0, 131071, 2, 0, 131072, 6, 0, 65537, 2, 0, 2, 6, 0, -65534, 2, 0, 65538, 6, 0, -196608, 2, 0, -131073, 6, 0, -65538, 2, 0, -65539, 6, 0, -3, 2, 0, 65533, 6, 0, 131069, 2, 0, 196606, 2, 0, 196607, 6, 0, 196608, 2, 0, 131073, 6, 0, 131074, 6, 0, 65539, 2, 0, 3, 6, 0, -65533, 2, 0, -131069, 6, 0, -131070, 2, 0, -196607, 6, 0)
 
 [node name="layer" type="TileMapLayer" parent="." unique_id=290644159]
+visible = false
 texture_filter = 1
 material = SubResource("ShaderMaterial_hbit7")
 tile_map_data = PackedByteArray("AAD9/wEAAgAAAAAAAAD+/wIAAgAAAAAAAAD//wIAAgAAAAAAAAAAAAMAAgAAAAAAAAABAAIAAgAAAAAAAAACAAIAAgAAAAAAAAADAAEAAgAAAAAAAAD//wEAAgAAAAAAAAD+/wEAAgAAAAAAAAD9/wAAAgAAAAAAAAAAAAIAAgAAAAAAAAABAAEAAgAAAAAAAAACAAEAAgAAAAAAAAADAAAAAgAAAAAAAAD9////AgAAAAAAAAD+/wAAAgAAAAAAAAD//wAAAgAAAAAAAAAAAAEAAgAAAAAAAAABAAAAAgAAAAAAAAACAAAAAgAAAAAAAAADAP//AgAAAAAAAAD9//7/AgAAAAAAAAD+////AgAAAAAAAAD/////AgAAAAAAAAAAAAAAAgAAAAAAAAABAP//AgAAAAAAAAACAP//AgAAAAAAAAADAP7/AgAAAAAAAAD+//7/AgAAAAAAAAD///7/AgAAAAAAAAAAAP//AgAAAAAAAAABAP7/AgAAAAAAAAACAP7/AgAAAAAAAAD///3/AgAAAAAAAAAAAP7/AgAAAAAAAAAAAP3/AgAAAAAAAAABAP3/AgAAAAAAAAA=")
@@ -172,6 +187,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="GameOver" type="Control" parent="." unique_id=380529899]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

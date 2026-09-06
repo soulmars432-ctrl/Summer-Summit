@@ -91,7 +91,7 @@ func _move_to(target: Vector2i) -> void:
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(self,"position", tilemap.map_to_local(target),0.5)
-	Audio.play(3)
+	Audio.play(3,3)
 	#animation/sound
 
 func _attack(enemy) -> void:
