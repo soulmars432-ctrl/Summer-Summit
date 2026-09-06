@@ -46,8 +46,10 @@ func step_all_enemies_toward_player(player_cell: Vector2i, tilemap: TileMapLayer
 			GameManager.player_died()
 			enemies[cell] = enemy
 			continue
-
-		enemy.position = tilemap.map_to_local(next_cell)
+		var tween = create_tween()
+		tween.set_trans(Tween.TRANS_SINE)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.tween_property(enemy,"position", tilemap.map_to_local(next_cell),0.6)
 		enemies[next_cell] = enemy
 
 	TurnManager.end_enemy_turn()
@@ -59,19 +61,20 @@ func get_enemy_at(cell: Vector2i):
 	return enemies.get(cell, null)
 
 func kill(enemy: Node2D) -> void:
-	var cell = _find_cell_for(enemy)
-	if cell != null:
-		enemies.erase(cell)
-	enemy.queue_free()
-	GameManager.add_score()
-	if enemies.is_empty():
-		wave_cleared_pending = true
+	for cell in _find_cell_for(enemy):
+		if cell != null:
+			enemies.erase(cell)
+		enemy.queue_free()
+		GameManager.add_score()
+		if enemies.is_empty():
+			wave_cleared_pending = true
 
 func _find_cell_for(enemy: Node2D):
+	var all_enemy = []
 	for c in enemies.keys():
 		if enemies[c] == enemy:
-			return c
-	return null
+			all_enemy.append(c)
+	return all_enemy
 
 func _get_step_toward(from: Vector2i, to: Vector2i, tilemap: TileMapLayer) -> Vector2i:
 	var neighbors = tilemap.get_surrounding_cells(from)
@@ -191,8 +194,10 @@ func step_orc_toward_player(player_cell: Vector2i, map: TileMapLayer) -> void:
 			GameManager.player_died()
 			enemies[cell] = enemy
 			continue
-
-		enemy.position = tilemap.map_to_local(next_cell)
+		var tween = create_tween()
+		tween.set_trans(Tween.TRANS_SINE)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.tween_property(enemy,"position", tilemap.map_to_local(next_cell),0.6)
 		enemies[next_cell] = enemy
 
 	TurnManager.end_enemy_turn()

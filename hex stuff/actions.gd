@@ -23,7 +23,17 @@ func _on_turn_started(state) -> void:
 		actions_label.text = "Enemy turn..."
 
 func _play_roll_animation(final_value: int) -> void:
-	for i in 8:
-		die_sprite.texture = die_faces[randi_range(0, 5)]
-		await get_tree().create_timer(0.2).timeout
-	die_sprite.texture = die_faces[final_value - 1]
+	var tween = create_tween()
+	for i in 12:
+		var progress = float(i) / 12
+		var step_duration = lerp(0.04, 0.12, progress)
+		var fake_value = randi_range(0, 5)
+		
+		tween.tween_callback(func(): die_sprite.texture = die_faces[fake_value])
+		tween.tween_property(die_sprite, "scale:x", 0.0, step_duration * 0.5)
+		tween.tween_property(die_sprite, "scale:x", 0.5, step_duration * 0.5)
+		tween.parallel().tween_property(die_sprite, "rotation_degrees",
+			die_sprite.rotation_degrees + randf_range(-25, 25), step_duration)
+	
+	tween.tween_callback(func(): die_sprite.texture = die_faces[final_value - 1])
+	tween.tween_property(die_sprite, "rotation_degrees", 0, 0.15).set_trans(Tween.TRANS_BACK)

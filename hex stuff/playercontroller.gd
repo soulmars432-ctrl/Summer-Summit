@@ -15,6 +15,7 @@ func _ready() -> void:
 	EnemyManager.enemy_parent = get_tree().current_scene
 	TurnManager.start_player_turn()
 
+
 func _on_turn_started(state) -> void:
 	if state == TurnManager.State.Playerturn:
 		_highlight_valid_moves()
@@ -86,7 +87,10 @@ func _try_resolve_click(target: Vector2i) -> void:
 
 func _move_to(target: Vector2i) -> void:
 	cell = target
-	position = tilemap.map_to_local(target)
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(self,"position", tilemap.map_to_local(target),0.5)
 	Audio.play(3)
 	#animation/sound
 
