@@ -1,7 +1,26 @@
 [gd_scene format=3 uid="uid://bethkqsnkxodi"]
 
 [ext_resource type="Script" uid="uid://cgb0iomwcgowi" path="res://hex stuff/enemy.gd" id="1_4n7gc"]
-[ext_resource type="Texture2D" uid="uid://dw2e57aw0iwi4" path="res://dragon.png" id="2_4n7gc"]
+[ext_resource type="Texture2D" uid="uid://prfhtaowc5gn" path="res://img/characters/dragon/dragon idle frame 1.png" id="2_h5gsq"]
+[ext_resource type="Texture2D" uid="uid://e5ovpwlijext" path="res://img/characters/dragon/dragon idle frame 2.png" id="3_xqrs8"]
+[ext_resource type="Texture2D" uid="uid://bj7kj7n46eylk" path="res://img/characters/dragon/dragon idle frame 3.png" id="4_bs6jx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mh0y7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h5gsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xqrs8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bs6jx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="Node2D" unique_id=1320795149]
 z_index = 2
@@ -10,6 +29,9 @@ scale = Vector2(0.23, 0.23)
 script = ExtResource("1_4n7gc")
 is_dragon = true
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1897728430]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1856126072]
 scale = Vector2(2, 2)
-texture = ExtResource("2_4n7gc")
+sprite_frames = SubResource("SpriteFrames_mh0y7")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.4066527

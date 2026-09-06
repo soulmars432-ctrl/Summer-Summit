@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://bcov6g18r0j5w" path="res://hex stuff/gameover.gd" id="12_mxfnm"]
 [ext_resource type="Texture2D" uid="uid://buatlnkyfavwh" path="res://img/main_menu.png" id="18_7gnqv"]
 [ext_resource type="FontFile" uid="uid://ccuulr64qqs18" path="res://font/darinia/Darinia.ttf" id="19_finug"]
+[ext_resource type="Texture2D" uid="uid://dpb115ngcsx2k" path="res://hex stuff/Plus_Jakarta_Sans/safe tile 2 (1).png" id="19_pysxu"]
 [ext_resource type="Texture2D" uid="uid://etggk6oh5edp" path="res://sp.png" id="27_g403w"]
 
 [sub_resource type="Theme" id="Theme_mhygs"]
@@ -157,6 +158,47 @@ sources/1 = SubResource("TileSetAtlasSource_mhygs")
 sources/2 = SubResource("TileSetAtlasSource_g403w")
 sources/3 = SubResource("TileSetAtlasSource_pysxu")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l8vwd"]
+texture = ExtResource("8_6qy82")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bigev"]
+texture = ExtResource("9_3dl4x")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w1xwa"]
+texture = ExtResource("10_u6gt7")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yn4qg"]
+texture = ExtResource("11_y1n2r")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y2snu"]
+texture = SubResource("CompressedTexture2D_i5lwy")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x4hw8"]
+texture = ExtResource("19_pysxu")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_x4hw8"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(128, 111)
+sources/4 = SubResource("TileSetAtlasSource_y2snu")
+sources/0 = SubResource("TileSetAtlasSource_l8vwd")
+sources/1 = SubResource("TileSetAtlasSource_bigev")
+sources/2 = SubResource("TileSetAtlasSource_w1xwa")
+sources/3 = SubResource("TileSetAtlasSource_yn4qg")
+sources/5 = SubResource("TileSetAtlasSource_x4hw8")
+
 [sub_resource type="LabelSettings" id="LabelSettings_finug"]
 font = ExtResource("19_finug")
 font_size = 36
@@ -247,12 +289,21 @@ tile_set = SubResource("TileSet_4ed8p")
 format = 2
 layer_0/z_index = 1
 
-[node name="Player" parent="." unique_id=685893003 node_paths=PackedStringArray("tilemap", "highlightgreen", "highlightred") instance=ExtResource("2_i5lwy")]
+[node name="HoverHighlight" type="TileMap" parent="." unique_id=1733277747]
+modulate = Color(0.74558026, 0.7455802, 0.74558014, 1)
+z_index = 1
+texture_filter = 1
+tile_set = SubResource("TileSet_x4hw8")
+format = 2
+layer_0/z_index = 1
+
+[node name="Player" parent="." unique_id=685893003 node_paths=PackedStringArray("tilemap", "highlightgreen", "highlightred", "highlight") instance=ExtResource("2_i5lwy")]
 z_index = 3
 scale = Vector2(0.25, 0.25)
 tilemap = NodePath("../layer")
 highlightgreen = NodePath("../Highlightgreen")
 highlightred = NodePath("../Highlightred")
+highlight = NodePath("../HoverHighlight")
 
 [node name="Marker" type="Node2D" parent="." unique_id=686776827 node_paths=PackedStringArray("tilemap")]
 z_index = 4
@@ -299,7 +350,7 @@ scale = Vector2(0.15, 0.25)
 [node name="GameOver" type="Control" parent="." unique_id=380529899]
 process_mode = 3
 visible = false
-z_index = 4
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
