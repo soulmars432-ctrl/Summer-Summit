@@ -1,12 +1,15 @@
 extends Label
 
 func _ready() -> void:
+	await get_tree().process_frame
+	pivot_offset = size / 2
 	GameManager.score_changed.connect(_on_score_changed)
 	text = "%d" % GameManager.score
 
 func _on_score_changed(new_score: int) -> void:
 	text = "%d" % new_score
-
+	pivot_offset = size / 2
+	
 	var base_color = _get_base_color(new_score)
 	var base_scale = _get_base_scale(new_score)
 

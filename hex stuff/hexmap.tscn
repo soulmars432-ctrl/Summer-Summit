@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://c1sxqk3386riu" path="res://hex stuff/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf" id="3_fc8ok"]
 [ext_resource type="Script" uid="uid://cprmevwyv26gh" path="res://hex stuff/actions.gd" id="3_mu5m0"]
 [ext_resource type="Texture2D" uid="uid://bei58hknn7o13" path="res://hex stuff/d1.png" id="4_ei8ir"]
-[ext_resource type="Shader" uid="uid://bsjjg2xfcx55g" path="res://hex stuff/hexmap.gdshader" id="4_hbit7"]
+[ext_resource type="Shader" path="res://hex stuff/hexmap.gdshader" id="4_hbit7"]
 [ext_resource type="Texture2D" uid="uid://bolqmxja825wt" path="res://img/safe tile 2.png" id="4_v3wj0"]
 [ext_resource type="Texture2D" uid="uid://dtgq57m0vmyfb" path="res://hex stuff/d2.png" id="5_ffuv8"]
 [ext_resource type="Script" uid="uid://d21oc8k11wcyu" path="res://hex stuff/score.gd" id="5_nuo3n"]
@@ -153,9 +153,9 @@ script = ExtResource("3_7nkik")
 tilemap = NodePath("../TileMap")
 
 [node name="Score" type="Label" parent="." unique_id=444486317]
-offset_left = 540.0
+offset_left = 600.0
 offset_top = -300.0
-offset_right = 668.0
+offset_right = 728.0
 offset_bottom = -172.0
 theme_override_fonts/font = ExtResource("3_fc8ok")
 theme_override_font_sizes/font_size = 64
