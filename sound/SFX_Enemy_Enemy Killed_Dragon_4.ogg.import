@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b3l3xchcdao2j"
+path="res://.godot/imported/SFX_Enemy_Enemy Killed_Dragon_4.ogg-6077662c4e2072d4778f4da022c8bf14.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/SFX_Enemy_Enemy Killed_Dragon_4.ogg"
+dest_files=["res://.godot/imported/SFX_Enemy_Enemy Killed_Dragon_4.ogg-6077662c4e2072d4778f4da022c8bf14.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

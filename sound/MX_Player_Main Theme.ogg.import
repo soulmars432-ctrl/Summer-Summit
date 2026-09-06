@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dvbev0p4drt5u"
+path="res://.godot/imported/MX_Player_Main Theme.ogg-12e0e4e26a77c0063c2aa9227749dbde.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/MX_Player_Main Theme.ogg"
+dest_files=["res://.godot/imported/MX_Player_Main Theme.ogg-12e0e4e26a77c0063c2aa9227749dbde.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

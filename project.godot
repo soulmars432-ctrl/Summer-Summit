@@ -15,12 +15,17 @@ run/main_scene="uid://bdv2to8ulk3j1"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+general/default_playback_type.web=0
+
 [autoload]
 
 TurnManager="*uid://crrqcsdm5vtux"
 EnemyManager="*uid://da5wihj8kbihm"
 GameManager="*uid://bp4l7cah1nr45"
 Audio="*uid://bakpgwm6j1mof"
+Scorestyle="*uid://bg4eje0y0ya2a"
 
 [display]
 

@@ -96,5 +96,5 @@ func _move_to(target: Vector2i) -> void:
 
 func _attack(enemy) -> void:
 	EnemyManager.kill(enemy)
-	Audio.play(1)
+	Audio.play(18,21)
 	#animation/sound
