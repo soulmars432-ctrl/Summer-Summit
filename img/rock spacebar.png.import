@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://174ry7e38ajq"
-path="res://.godot/imported/slain enemy tile 1.png-77a028173128633fba53a81ac36ae72e.ctex"
+uid="uid://b4jo4ekl8ti2q"
+path="res://.godot/imported/rock spacebar.png-7d2d05632b201769c70cf122238f2e5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/tile/new/slain enemy tile 1.png"
-dest_files=["res://.godot/imported/slain enemy tile 1.png-77a028173128633fba53a81ac36ae72e.ctex"]
+source_file="res://img/rock spacebar.png"
+dest_files=["res://.godot/imported/rock spacebar.png-7d2d05632b201769c70cf122238f2e5d.ctex"]
 
 [params]
 

@@ -20,6 +20,7 @@ func _get_base_color(score: int) -> Color:
 	return Color(1, 1, 1)
 
 func _on_restart_pressed() -> void:
+	Audio.play(28,28)
 	get_tree().paused = false
 	GameManager.score = 0
 	GameManager.is_game_over = false

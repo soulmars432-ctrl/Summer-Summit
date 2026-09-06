@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://cprmevwyv26gh" path="res://hex stuff/actions.gd" id="3_mu5m0"]
 [ext_resource type="Texture2D" uid="uid://bei58hknn7o13" path="res://hex stuff/d1.png" id="4_ei8ir"]
 [ext_resource type="Shader" uid="uid://bsjjg2xfcx55g" path="res://hex stuff/hexmap.gdshader" id="4_hbit7"]
-[ext_resource type="Texture2D" uid="uid://bolqmxja825wt" path="res://img/safe tile 2.png" id="4_v3wj0"]
 [ext_resource type="Texture2D" uid="uid://dtgq57m0vmyfb" path="res://hex stuff/d2.png" id="5_ffuv8"]
 [ext_resource type="Script" uid="uid://d21oc8k11wcyu" path="res://hex stuff/score.gd" id="5_nuo3n"]
 [ext_resource type="Texture2D" uid="uid://hajuq8yxj3l" path="res://img/tile/slain enemy safe tile 1.png" id="6_6luq0"]
@@ -19,10 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://bnxs10qv0gly8" path="res://img/tile/slain enemy safe tile 2.png" id="7_7gnqv"]
 [ext_resource type="Texture2D" uid="uid://brsw3fkp5mx64" path="res://hex stuff/d4.png" id="7_7nkik"]
 [ext_resource type="Texture2D" uid="uid://rqiwd8p0ed23" path="res://img/tile/safe tile 2.png" id="7_y1n2r"]
+[ext_resource type="Texture2D" uid="uid://vt114wxyplvv" path="res://img/tile/tile/tile 1.png" id="8_4lyrf"]
 [ext_resource type="Texture2D" uid="uid://dxgqmh8yjv5ep" path="res://img/tile/unsafe tile 1.png" id="8_6qy82"]
 [ext_resource type="Texture2D" uid="uid://3y2pn55abb6x" path="res://hex stuff/d5.png" id="8_nuo3n"]
 [ext_resource type="Texture2D" uid="uid://mg5fajjj27f7" path="res://img/tile/unsafe tile 2.png" id="9_3dl4x"]
 [ext_resource type="Texture2D" uid="uid://cp0fvtgpxidcx" path="res://hex stuff/d6.png" id="9_dr6jq"]
+[ext_resource type="Texture2D" uid="uid://bgjei4rpuegl7" path="res://img/tile/tile/tile 2.png" id="10_l8vwd"]
 [ext_resource type="Texture2D" uid="uid://bp48dg30qdjx3" path="res://img/tile/slain enemy unsafe tile 1.png" id="10_u6gt7"]
 [ext_resource type="Texture2D" uid="uid://b373kdedpxy0d" path="res://img/tile/slain enemy unsafe tile 2.png" id="11_y1n2r"]
 [ext_resource type="Script" uid="uid://bcov6g18r0j5w" path="res://hex stuff/gameover.gd" id="12_mxfnm"]
@@ -30,6 +31,8 @@
 [ext_resource type="FontFile" uid="uid://ccuulr64qqs18" path="res://font/darinia/Darinia.ttf" id="19_finug"]
 [ext_resource type="Texture2D" uid="uid://dpb115ngcsx2k" path="res://hex stuff/Plus_Jakarta_Sans/safe tile 2 (1).png" id="19_pysxu"]
 [ext_resource type="Texture2D" uid="uid://etggk6oh5edp" path="res://sp.png" id="27_g403w"]
+[ext_resource type="Texture2D" uid="uid://b4jo4ekl8ti2q" path="res://img/rock spacebar.png" id="29_4lyrf"]
+[ext_resource type="Script" uid="uid://crbvsd6s1q20t" path="res://hex stuff/endturn.gd" id="29_5lit6"]
 
 [sub_resource type="Theme" id="Theme_mhygs"]
 default_font = ExtResource("19_finug")
@@ -48,18 +51,9 @@ font_size = 36
 texture = ExtResource("2_dr6jq")
 texture_region_size = Vector2i(128, 111)
 0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-1:1/next_alternative_id = 2
-1:1/0 = 0
-2:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6luq0"]
-texture = ExtResource("2_dr6jq")
+texture = ExtResource("8_4lyrf")
 texture_region_size = Vector2i(128, 111)
 0:0/0 = 0
 
@@ -69,7 +63,7 @@ texture_region_size = Vector2i(128, 111)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7gnqv"]
-texture = ExtResource("4_v3wj0")
+texture = ExtResource("10_l8vwd")
 texture_region_size = Vector2i(128, 111)
 0:0/0 = 0
 
@@ -203,6 +197,9 @@ sources/5 = SubResource("TileSetAtlasSource_x4hw8")
 font = ExtResource("19_finug")
 font_size = 36
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4lyrf"]
+texture = ExtResource("29_4lyrf")
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ypghl"]
 texture = ExtResource("18_7gnqv")
 
@@ -225,19 +222,20 @@ scale = Vector2(1.14, 1.169)
 texture = ExtResource("2_g403w")
 
 [node name="Panel3" type="Panel" parent="." unique_id=1567306531]
-offset_left = 799.99994
-offset_top = 8.0
-offset_right = 1191.817
-offset_bottom = 395.15878
+modulate = Color(1.04, 0.49, 0.314, 1)
+offset_left = 800.82385
+offset_top = -65.42844
+offset_right = 1178.147
+offset_bottom = 248.29733
 rotation = 3.1528125
 theme = SubResource("Theme_mhygs")
 theme_override_styles/panel = SubResource("StyleBoxTexture_pysxu")
 
 [node name="Score" type="Label" parent="." unique_id=444486317]
-offset_left = 536.0
-offset_top = -248.0
-offset_right = 664.0
-offset_bottom = -120.0
+offset_left = 552.0
+offset_top = -272.0
+offset_right = 680.0
+offset_bottom = -144.0
 theme_override_fonts/font = ExtResource("3_fc8ok")
 theme_override_font_sizes/font_size = 64
 text = "0"
@@ -247,10 +245,10 @@ vertical_alignment = 1
 script = ExtResource("5_nuo3n")
 
 [node name="label" type="Label" parent="." unique_id=1989835197]
-offset_left = 520.0
-offset_top = -312.0
-offset_right = 688.0
-offset_bottom = -184.0
+offset_left = 528.0
+offset_top = -344.0
+offset_right = 696.0
+offset_bottom = -216.0
 theme_override_fonts/font = ExtResource("3_fc8ok")
 theme_override_font_sizes/font_size = 64
 text = "score:"
@@ -297,13 +295,12 @@ tile_set = SubResource("TileSet_x4hw8")
 format = 2
 layer_0/z_index = 1
 
-[node name="Player" parent="." unique_id=685893003 node_paths=PackedStringArray("tilemap", "highlightgreen", "highlightred", "highlight") instance=ExtResource("2_i5lwy")]
+[node name="Player" parent="." unique_id=685893003 node_paths=PackedStringArray("tilemap", "highlightgreen", "highlightred") instance=ExtResource("2_i5lwy")]
 z_index = 3
 scale = Vector2(0.25, 0.25)
 tilemap = NodePath("../layer")
 highlightgreen = NodePath("../Highlightgreen")
 highlightred = NodePath("../Highlightred")
-highlight = NodePath("../HoverHighlight")
 
 [node name="Marker" type="Node2D" parent="." unique_id=686776827 node_paths=PackedStringArray("tilemap")]
 z_index = 4
@@ -321,10 +318,11 @@ die_faces = Array[Texture2D]([ExtResource("4_ei8ir"), ExtResource("5_ffuv8"), Ex
 actions_label = NodePath("Actions")
 
 [node name="Panel2" type="Panel" parent="UI" unique_id=1961505907]
+modulate = Color(1.0395648, 0.49023813, 0.31411815, 1)
 offset_left = -48.0
 offset_top = -16.0
-offset_right = 368.0
-offset_bottom = 376.0
+offset_right = 328.0
+offset_bottom = 288.0
 theme = SubResource("Theme_mhygs")
 theme_override_styles/panel = SubResource("StyleBoxTexture_pysxu")
 
@@ -332,9 +330,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_pysxu")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 40.0
+offset_left = 16.0
 offset_top = 40.0
-offset_right = 296.0
+offset_right = 272.0
 offset_bottom = 104.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_fc8ok")
@@ -344,8 +342,34 @@ label_settings = SubResource("LabelSettings_finug")
 horizontal_alignment = 1
 
 [node name="Die" type="Sprite2D" parent="UI" unique_id=1428179529]
-position = Vector2(168, 192)
+position = Vector2(145, 156)
 scale = Vector2(0.15, 0.25)
+
+[node name="Panel" type="Panel" parent="UI" unique_id=1220039575]
+modulate = Color(0.62362087, 1.4672765, 2.2848396, 1)
+offset_left = 72.0
+offset_top = 672.0
+offset_right = 336.0
+offset_bottom = 760.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4lyrf")
+
+[node name="Button" type="Button" parent="." unique_id=1995170681]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -563.5
+offset_top = 332.5
+offset_right = -340.5
+offset_bottom = 379.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("19_finug")
+theme_override_font_sizes/font_size = 38
+text = "END TURN"
+flat = true
+script = ExtResource("29_5lit6")
 
 [node name="GameOver" type="Control" parent="." unique_id=380529899]
 process_mode = 3

@@ -3,7 +3,6 @@ class_name Playercontroller
 @export var tilemap: TileMapLayer
 @export var highlightgreen: TileMap
 @export var highlightred: TileMap
-@export var highlight: TileMap
 var cell: Vector2i
 var cell_variant_cache: Dictionary = {}
 const highlightcoords = Vector2i(0, 0)
@@ -79,10 +78,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var clicked_cell = tilemap.local_to_map(tilemap.to_local(get_global_mouse_position()))
 		_try_resolve_click(clicked_cell)
-	var target = tilemap.local_to_map(tilemap.to_local(get_global_mouse_position()))
-	if event is InputEventMouseMotion and tilemap.get_used_cells().has(target):
-		highlight.clear()
-		highlight.set_cell(0,target,5,Vector2i(0,0))
 
 func _try_resolve_click(target: Vector2i) -> void:
 	var neighbors = tilemap.get_surrounding_cells(cell)
