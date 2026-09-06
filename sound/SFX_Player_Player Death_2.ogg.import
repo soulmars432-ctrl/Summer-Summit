@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bunm5pi4npxm8"
+path="res://.godot/imported/SFX_Player_Player Death_2.ogg-e529a206a34f753bece5bf4385cf224a.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/SFX_Player_Player Death_2.ogg"
+dest_files=["res://.godot/imported/SFX_Player_Player Death_2.ogg-e529a206a34f753bece5bf4385cf224a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

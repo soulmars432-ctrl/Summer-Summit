@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://y2l025eqnike"
+path="res://.godot/imported/SFX_Enemy_Enemy Killed_1.ogg-2c54eb6f11b4f5d9be45903f21fb1d33.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/SFX_Enemy_Enemy Killed_1.ogg"
+dest_files=["res://.godot/imported/SFX_Enemy_Enemy Killed_1.ogg-2c54eb6f11b4f5d9be45903f21fb1d33.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

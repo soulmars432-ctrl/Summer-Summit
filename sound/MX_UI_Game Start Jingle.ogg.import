@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bxihi76ywig1g"
+path="res://.godot/imported/MX_UI_Game Start Jingle.ogg-9af5d512e3bcd609074dc4e926ca888a.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/MX_UI_Game Start Jingle.ogg"
+dest_files=["res://.godot/imported/MX_UI_Game Start Jingle.ogg-9af5d512e3bcd609074dc4e926ca888a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

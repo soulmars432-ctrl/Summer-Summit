@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://iq8u2ltauoci"
+path="res://.godot/imported/SFX_UI_Dice Roll_2.ogg-c78d2aa4c4b5546eba1295272e5464b3.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/SFX_UI_Dice Roll_2.ogg"
+dest_files=["res://.godot/imported/SFX_UI_Dice Roll_2.ogg-c78d2aa4c4b5546eba1295272e5464b3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

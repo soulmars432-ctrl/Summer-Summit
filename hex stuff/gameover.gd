@@ -9,6 +9,7 @@ func _ready() -> void:
 	restart_button.pressed.connect(_on_restart_pressed)
 
 func _on_game_over(final_score: int) -> void:
+	Sound.play(4)
 	score_label.text = "Game Over!\nScore: %d" % final_score
 	visible = true
 	get_tree().paused = true
