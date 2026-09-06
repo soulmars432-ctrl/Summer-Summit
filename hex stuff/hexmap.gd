@@ -12,3 +12,4 @@ func _ready() -> void:
 		enemy.just_spawned = false
 		EnemyManager.register_enemy(enemy, cell)
 	Audio.play_ambient(0)
+	Audio.play_music()

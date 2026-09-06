@@ -8,4 +8,4 @@ func _ready() -> void:
 	
 func _button_pressed():
 	get_tree().change_scene_to_file("res://hex stuff/hexmap.tscn")
-	Audio.play(27,27)
+	Audio.play(28,28)

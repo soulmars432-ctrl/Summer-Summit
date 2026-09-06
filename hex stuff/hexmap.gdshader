@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 void vertex() {
-	COLOR = vec4(0.6, 0.0, 0.0, 0.5);
+	COLOR = vec4(0.8, 0.3, 0.3, 0.4);
 }
 
 void fragment() {

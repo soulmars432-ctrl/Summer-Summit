@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bua3nfocnxurs"]
+
+[ext_resource type="Script" uid="uid://doupx6u7jk45j" path="res://color_rect.gd" id="2_2v1kd"]
+[ext_resource type="Script" uid="uid://chcnadi61x5eb" path="res://button.gd" id="2_iptu7"]
+[ext_resource type="Script" uid="uid://bfhc2p7h78toc" path="res://margin_container.gd" id="3_iptu7"]
+
+[node name="Node2D" type="Node2D" unique_id=498210755]
+position = Vector2(2, 4)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2042695707]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_2v1kd")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=896818903]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_iptu7")
+
+[node name="Button" type="Button" parent="MarginContainer" unique_id=967172222]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_iptu7")

@@ -17,4 +17,4 @@ func player_died() -> void:
 		return
 	is_game_over = true
 	game_over.emit(score)
-	Audio.play(19,22)
+	Audio.play(20,23)
