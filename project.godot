@@ -21,6 +21,7 @@ TurnManager="*uid://crrqcsdm5vtux"
 EnemyManager="*uid://da5wihj8kbihm"
 GameManager="*uid://bp4l7cah1nr45"
 Audio="*uid://bakpgwm6j1mof"
+Scorestyle="*uid://bg4eje0y0ya2a"
 
 [display]
 

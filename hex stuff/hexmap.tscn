@@ -40,6 +40,30 @@ tile_offset_axis = 1
 tile_size = Vector2i(128, 111)
 sources/0 = SubResource("TileSetAtlasSource_fc8ok")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nuo3n"]
+bg_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9843137, 0.9490196, 0.21176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hbit7"]
+bg_color = Color(0.35686275, 0.43137255, 0.88235295, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9843137, 0.9490196, 0.21176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dr6jq"]
+bg_color = Color(0.24705882, 0.24705882, 0.45490196, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9843137, 0.9490196, 0.21176471, 1)
+
 [node name="Node2D" type="Node2D" unique_id=1279603025 node_paths=PackedStringArray("tilemap")]
 script = ExtResource("1_ffuv8")
 tilemap = NodePath("layer")
@@ -93,9 +117,9 @@ script = ExtResource("3_7nkik")
 tilemap = NodePath("../TileMap")
 
 [node name="Score" type="Label" parent="." unique_id=444486317]
-offset_left = 600.0
+offset_left = 540.0
 offset_top = -300.0
-offset_right = 728.0
+offset_right = 668.0
 offset_bottom = -172.0
 theme_override_fonts/font = ExtResource("3_fc8ok")
 theme_override_font_sizes/font_size = 64
@@ -133,25 +157,41 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("12_mxfnm")
 
-[node name="Label" type="Label" parent="GameOver" unique_id=11949591]
+[node name="Background" type="ColorRect" parent="GameOver" unique_id=325093310]
+z_index = 4
 layout_mode = 0
-offset_left = -100.0
-offset_top = -100.0
-offset_right = 224.0
-offset_bottom = -20.0
+offset_left = -256.0
+offset_top = -180.0
+offset_right = 384.0
+offset_bottom = 300.0
+color = Color(0.19607843, 0.23529412, 0.22352941, 1)
+
+[node name="Label" type="Label" parent="GameOver/Background" unique_id=11949591]
+z_index = 4
+layout_mode = 0
+offset_left = 140.0
+offset_top = 80.0
+offset_right = 500.0
+offset_bottom = 162.0
 theme_override_fonts/font = ExtResource("3_fc8ok")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
 horizontal_alignment = 1
 
-[node name="Restart" type="Button" parent="GameOver" unique_id=1811325502]
+[node name="Restart" type="Button" parent="GameOver/Background" unique_id=1811325502]
 process_mode = 3
+z_index = 4
 layout_mode = 0
-offset_left = -100.0
-offset_top = 200.0
-offset_right = 224.0
-offset_bottom = 280.0
+offset_left = 156.0
+offset_top = 380.0
+offset_right = 480.0
+offset_bottom = 460.0
+theme_override_fonts/font = ExtResource("3_fc8ok")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_nuo3n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hbit7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dr6jq")
 text = "Restart"
 
 [node name="enemies" type="Node2D" parent="." unique_id=1291798679]
 
-[connection signal="pressed" from="GameOver/Restart" to="GameOver" method="_on_restart_pressed"]
+[connection signal="pressed" from="GameOver/Background/Restart" to="GameOver" method="_on_restart_pressed"]
