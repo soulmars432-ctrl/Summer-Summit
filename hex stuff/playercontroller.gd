@@ -6,9 +6,9 @@ class_name Playercontroller
 var cell: Vector2i
 var cell_variant_cache: Dictionary = {}
 const highlightcoords = Vector2i(0, 0)
-const unsafe = [0, 1]
-const slainsafe = [2, 3]
-const slainunsafe = [2, 3]
+const unsafe = 0
+const slainsafe = 2
+const slainunsafe = 2
 const tilecoord = Vector2i(0, 0)
 
 func _ready() -> void:
@@ -41,13 +41,13 @@ func _highlight_valid_moves() -> void:
 		var enemy = EnemyManager.get_enemy_at(n)
 		if not enemy:
 			if n in EnemyManager.killed_cells:
-				highlightgreen.set_cell(0, n, _pick_source(slainsafe), tilecoord)
-			elif randf() < 0.5:
+				highlightgreen.set_cell(0, n, slainsafe, tilecoord)
+			else:
 				highlightgreen.set_cell(0, n, 1, tilecoord)
 
 	for enemy_cell in EnemyManager.enemies.keys():
 		if tilemap.get_used_cells().has(enemy_cell):
-			highlightred.set_cell(0, enemy_cell, _pick_source(unsafe), tilecoord)
+			highlightred.set_cell(0, enemy_cell, unsafe, tilecoord)
 		var enemy_node = EnemyManager.get_enemy_at(enemy_cell)
 		var danger_cells = []
 		if enemy_node.is_dragon:
@@ -61,10 +61,9 @@ func _highlight_valid_moves() -> void:
 				continue
 			if not EnemyManager.enemies.has(danger_cell):
 				if danger_cell in EnemyManager.killed_cells:
-					highlightred.set_cell(0, danger_cell, _pick_source(slainunsafe), tilecoord)
+					highlightred.set_cell(0, danger_cell, slainunsafe, tilecoord)
 				else:
-					highlightred.set_cell(0, danger_cell, _pick_source(unsafe), tilecoord)
-
+					highlightred.set_cell(0, danger_cell, unsafe, tilecoord)
 	EnemyManager.clear_killed_cells() 
 
 func _clear_highlights() -> void:
