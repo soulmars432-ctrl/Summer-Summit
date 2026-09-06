@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://c1sxqk3386riu" path="res://hex stuff/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf" id="3_fc8ok"]
 [ext_resource type="Script" uid="uid://cprmevwyv26gh" path="res://hex stuff/actions.gd" id="3_mu5m0"]
 [ext_resource type="Texture2D" uid="uid://bei58hknn7o13" path="res://hex stuff/d1.png" id="4_ei8ir"]
-[ext_resource type="Shader" uid="uid://bsjjg2xfcx55g" path="res://hex stuff/hexmap.gdshader" id="4_hbit7"]
+[ext_resource type="Shader" path="res://hex stuff/hexmap.gdshader" id="4_hbit7"]
 [ext_resource type="Texture2D" uid="uid://bolqmxja825wt" path="res://img/safe tile 2.png" id="4_v3wj0"]
 [ext_resource type="Texture2D" uid="uid://dtgq57m0vmyfb" path="res://hex stuff/d2.png" id="5_ffuv8"]
 [ext_resource type="Script" uid="uid://d21oc8k11wcyu" path="res://hex stuff/score.gd" id="5_nuo3n"]
