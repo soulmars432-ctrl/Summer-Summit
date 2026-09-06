@@ -43,7 +43,7 @@ func _highlight_valid_moves() -> void:
 			if n in EnemyManager.killed_cells:
 				highlightgreen.set_cell(0, n, slainsafe, tilecoord)
 			else:
-				highlightgreen.set_cell(0, n, 1, tilecoord)
+				highlightgreen.set_cell(0, n, 0, tilecoord)
 
 	for enemy_cell in EnemyManager.enemies.keys():
 		if tilemap.get_used_cells().has(enemy_cell):
