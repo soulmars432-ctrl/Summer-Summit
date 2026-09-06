@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://chcl41b6cchj" path="res://hex stuff/hextile.png" id="1_ei64t"]
 [ext_resource type="Script" uid="uid://cu5cxxyyte5i6" path="res://hex stuff/hexmap.gd" id="1_ffuv8"]
 [ext_resource type="Texture2D" uid="uid://d0o7ms871veds" path="res://img/ground_tile.png" id="2_dr6jq"]
+[ext_resource type="Texture2D" uid="uid://c31qxvuqup7hp" path="res://hex stuff/background.png" id="2_g403w"]
 [ext_resource type="PackedScene" uid="uid://bbe30hps30tvu" path="res://player.tscn" id="2_i5lwy"]
 [ext_resource type="Script" uid="uid://fn8mg0nkdbic" path="res://hex stuff/marker.gd" id="3_7nkik"]
 [ext_resource type="FontFile" uid="uid://c1sxqk3386riu" path="res://hex stuff/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf" id="3_fc8ok"]
@@ -167,6 +168,11 @@ tilemap = NodePath("layer")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=114593868]
 offset = Vector2(56, 56)
 zoom = Vector2(0.9, 0.9)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1177977671]
+position = Vector2(54.000015, 49)
+scale = Vector2(1.14, 1.169)
+texture = ExtResource("2_g403w")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=327923456]
 texture_filter = 1
