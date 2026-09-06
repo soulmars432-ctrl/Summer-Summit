@@ -231,7 +231,6 @@ scale = Vector2(0.15, 0.25)
 
 [node name="GameOver" type="Control" parent="." unique_id=380529899]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
