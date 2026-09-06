@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://chcl41b6cchj" path="res://hex stuff/hextile.png" id="1_ei64t"]
 [ext_resource type="Script" uid="uid://cu5cxxyyte5i6" path="res://hex stuff/hexmap.gd" id="1_ffuv8"]
-[ext_resource type="Texture2D" uid="uid://rn6wy2wyqj0n" path="res://hex stuff/hexagon/sprite_0.png" id="2_6qy82"]
 [ext_resource type="Texture2D" uid="uid://d0o7ms871veds" path="res://img/ground_tile.png" id="2_dr6jq"]
 [ext_resource type="PackedScene" uid="uid://bbe30hps30tvu" path="res://player.tscn" id="2_i5lwy"]
 [ext_resource type="Script" uid="uid://fn8mg0nkdbic" path="res://hex stuff/marker.gd" id="3_7nkik"]
@@ -11,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bei58hknn7o13" path="res://hex stuff/d1.png" id="4_ei8ir"]
 [ext_resource type="Shader" path="res://hex stuff/hexmap.gdshader" id="4_hbit7"]
 [ext_resource type="Texture2D" uid="uid://bolqmxja825wt" path="res://img/safe tile 2.png" id="4_v3wj0"]
-[ext_resource type="Texture2D" uid="uid://bj3tfvwhtbgkt" path="res://hex stuff/hexagon/sprite_1.png" id="5_3dl4x"]
 [ext_resource type="Texture2D" uid="uid://dtgq57m0vmyfb" path="res://hex stuff/d2.png" id="5_ffuv8"]
 [ext_resource type="Script" uid="uid://d21oc8k11wcyu" path="res://hex stuff/score.gd" id="5_nuo3n"]
 [ext_resource type="Texture2D" uid="uid://hajuq8yxj3l" path="res://img/tile/slain enemy safe tile 1.png" id="6_6luq0"]
@@ -21,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://brsw3fkp5mx64" path="res://hex stuff/d4.png" id="7_7nkik"]
 [ext_resource type="Texture2D" uid="uid://rqiwd8p0ed23" path="res://img/tile/safe tile 2.png" id="7_y1n2r"]
 [ext_resource type="Texture2D" uid="uid://dxgqmh8yjv5ep" path="res://img/tile/unsafe tile 1.png" id="8_6qy82"]
-[ext_resource type="Texture2D" uid="uid://dfncl5hqdf1bi" path="res://hex stuff/hexagon/sprite_2.png" id="7_u6gt7"]
 [ext_resource type="Texture2D" uid="uid://br6nx67x00j80" path="res://panel.png" id="8_finug"]
 [ext_resource type="Texture2D" uid="uid://3y2pn55abb6x" path="res://hex stuff/d5.png" id="8_nuo3n"]
 [ext_resource type="Texture2D" uid="uid://mg5fajjj27f7" path="res://img/tile/unsafe tile 2.png" id="9_3dl4x"]
@@ -31,11 +28,6 @@
 [ext_resource type="Script" uid="uid://bcov6g18r0j5w" path="res://hex stuff/gameover.gd" id="12_mxfnm"]
 [ext_resource type="Texture2D" uid="uid://buatlnkyfavwh" path="res://img/main_menu.png" id="18_7gnqv"]
 [ext_resource type="FontFile" uid="uid://ccuulr64qqs18" path="res://font/darinia/Darinia.ttf" id="19_finug"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y1n2r"]
-texture = ExtResource("2_6qy82")
-texture_region_size = Vector2i(128, 111)
-0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hbit7"]
 texture = ExtResource("2_dr6jq")
@@ -62,7 +54,7 @@ texture_region_size = Vector2i(128, 111)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tkplo"]
-texture = ExtResource("5_3dl4x")
+texture = ExtResource("8_6qy82")
 texture_region_size = Vector2i(128, 111)
 0:0/0 = 0
 
@@ -72,7 +64,7 @@ texture_region_size = Vector2i(128, 111)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mhygs"]
-texture = ExtResource("7_u6gt7")
+texture = ExtResource("9_3dl4x")
 texture_region_size = Vector2i(128, 111)
 0:0/0 = 0
 
@@ -82,11 +74,10 @@ tile_offset_axis = 1
 tile_size = Vector2i(128, 111)
 sources/4 = SubResource("TileSetAtlasSource_i5lwy")
 sources/3 = SubResource("TileSetAtlasSource_6luq0")
-sources/2 = SubResource("TileSetAtlasSource_hbit7")
 sources/6 = SubResource("TileSetAtlasSource_7gnqv")
-sources/1 = SubResource("TileSetAtlasSource_y1n2r")
 sources/5 = SubResource("TileSetAtlasSource_tkplo")
 sources/7 = SubResource("TileSetAtlasSource_mhygs")
+sources/0 = SubResource("TileSetAtlasSource_hbit7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hbit7"]
 shader = ExtResource("4_hbit7")
@@ -128,16 +119,6 @@ sources/3 = SubResource("TileSetAtlasSource_dhw3q")
 sources/2 = SubResource("TileSetAtlasSource_ypghl")
 sources/0 = SubResource("TileSetAtlasSource_5lit6")
 sources/1 = SubResource("TileSetAtlasSource_4lyrf")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tkplo"]
-texture = ExtResource("8_6qy82")
-texture_region_size = Vector2i(128, 111)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mhygs"]
-texture = ExtResource("9_3dl4x")
-texture_region_size = Vector2i(128, 111)
-0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g403w"]
 texture = ExtResource("10_u6gt7")
