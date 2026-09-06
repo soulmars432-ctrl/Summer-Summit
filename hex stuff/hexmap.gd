@@ -11,3 +11,4 @@ func _ready() -> void:
 		enemy.place_at(cell, tilemap)
 		enemy.just_spawned = false
 		EnemyManager.register_enemy(enemy, cell)
+	Audio.play_ambient(0)

@@ -3,13 +3,13 @@ extends Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Audio.play(0,0)
+	Audio.play(1,1)
 	self.pressed.connect(_button_pressed)
 	
 	
 func _button_pressed():
 	get_tree().change_scene_to_file("res://hex stuff/hexmap.tscn")
-	Audio.play(26,26)
+	Audio.play(27,27)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

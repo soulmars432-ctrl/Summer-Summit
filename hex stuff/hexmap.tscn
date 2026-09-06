@@ -73,6 +73,20 @@ tile_offset_axis = 1
 tile_size = Vector2i(128, 111)
 sources/0 = SubResource("TileSetAtlasSource_fc8ok")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3wj0"]
+bg_color = Color(0.24705882, 0.24705882, 0.45490196, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9843137, 0.9490196, 0.21176471, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.5019608)
+shadow_size = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nuo3n"]
 bg_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
 border_width_left = 2
@@ -90,7 +104,7 @@ border_width_bottom = 2
 border_color = Color(0.9843137, 0.9490196, 0.21176471, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dr6jq"]
-bg_color = Color(0.24705882, 0.24705882, 0.45490196, 1)
+bg_color = Color(0.1882353, 0.3764706, 0.50980395, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -194,14 +208,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("12_mxfnm")
 
-[node name="Background" type="ColorRect" parent="GameOver" unique_id=325093310]
+[node name="Background" type="Panel" parent="GameOver" unique_id=578562646]
 z_index = 4
 layout_mode = 0
 offset_left = -256.0
 offset_top = -180.0
 offset_right = 384.0
 offset_bottom = 300.0
-color = Color(0.19607843, 0.23529412, 0.22352941, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_v3wj0")
 
 [node name="Label" type="Label" parent="GameOver/Background" unique_id=11949591]
 z_index = 4

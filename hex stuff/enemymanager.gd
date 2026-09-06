@@ -166,7 +166,7 @@ func spawn_pending_wave() -> void:
 
 	pending_spawn_cells.clear()
 	wave_started.emit()
-	Audio.play(10,13)
+	Audio.play(11,14)
 
 func try_announce_wave_if_cleared() -> void:
 	if wave_cleared_pending:

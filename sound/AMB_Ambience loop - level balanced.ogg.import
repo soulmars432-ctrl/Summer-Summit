@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cek4dae478d7l"
+path="res://.godot/imported/AMB_Ambience loop - level balanced.ogg-8e78eaff50f2cb919337a6d04fdf067b.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/AMB_Ambience loop - level balanced.ogg"
+dest_files=["res://.godot/imported/AMB_Ambience loop - level balanced.ogg-8e78eaff50f2cb919337a6d04fdf067b.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
