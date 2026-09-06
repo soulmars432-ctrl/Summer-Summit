@@ -1,6 +1,7 @@
 extends Node
 class_name SoundController
 
+#var death_moves = AudioStreamPlayer.new()
 var sound_player = AudioStreamPlayer.new()
 var music_player = AudioStreamPlayer.new()
 var sounds = []
@@ -9,22 +10,25 @@ var sounds = []
 func _ready() -> void:
 	var dir = DirAccess.open("res://sound/")
 	var sound_files = dir.get_files()
-	var path = ""
+	print(sound_files)
+	var path
+	var s
 	var i = 0
 	for c in sound_files:
 		if "import" not in c:
-			print(str(i) + " " + c)
+			#print(str(i) + " " + c)
 			i += 1
 			path = "res://sound/" + c
-			var s = AudioStreamOggVorbis.load_from_file(path)
+			s = load(path)
+			print(s)
 			sounds.append(s)
-	#print(sounds)
+	print(sounds)
 	add_child(sound_player)
 	add_child(music_player)
 	music_player.finished.connect(_on_music_finished)
 
 # Play sound
-	# Menu - 0  # Music - 1
+	# Menu - 1  # Music - 0,2
 	# Enemy    ## Death - 2,5     
 	# ## Dragon - 6,9   ## Spawn - 10,13
 	# Player   ## Movement - 14,17,  ## Death - 18,21
