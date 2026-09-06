@@ -87,10 +87,10 @@ func _try_resolve_click(target: Vector2i) -> void:
 func _move_to(target: Vector2i) -> void:
 	cell = target
 	position = tilemap.map_to_local(target)
-	Sound.play(3)
+	Audio.play(3)
 	#animation/sound
 
 func _attack(enemy) -> void:
 	EnemyManager.kill(enemy)
-	Sound.play(1)
+	Audio.play(1)
 	#animation/sound

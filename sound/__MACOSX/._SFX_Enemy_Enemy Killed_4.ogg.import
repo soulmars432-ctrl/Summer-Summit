@@ -1,0 +1,18 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://nh2bd747io04"
+valid=false
+
+[deps]
+
+source_file="res://sound/__MACOSX/._SFX_Enemy_Enemy Killed_4.ogg"
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

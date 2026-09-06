@@ -1,0 +1,140 @@
+[gd_scene format=4 uid="uid://hg57ccm3kfoh"]
+
+[ext_resource type="Texture2D" uid="uid://chcl41b6cchj" path="res://hex stuff/hextile.png" id="1_ei64t"]
+[ext_resource type="Script" uid="uid://cu5cxxyyte5i6" path="res://hex stuff/hexmap.gd" id="1_ffuv8"]
+[ext_resource type="PackedScene" uid="uid://bbe30hps30tvu" path="res://player.tscn" id="2_i5lwy"]
+[ext_resource type="Script" uid="uid://fn8mg0nkdbic" path="res://hex stuff/marker.gd" id="3_7nkik"]
+[ext_resource type="FontFile" uid="uid://c1sxqk3386riu" path="res://hex stuff/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf" id="3_fc8ok"]
+[ext_resource type="Script" uid="uid://cprmevwyv26gh" path="res://hex stuff/actions.gd" id="3_mu5m0"]
+[ext_resource type="Texture2D" uid="uid://bei58hknn7o13" path="res://hex stuff/d1.png" id="4_ei8ir"]
+[ext_resource type="Texture2D" uid="uid://dtgq57m0vmyfb" path="res://hex stuff/d2.png" id="5_ffuv8"]
+[ext_resource type="Texture2D" uid="uid://dkc8wd6q5o0wb" path="res://hex stuff/d3.png" id="6_mxfnm"]
+[ext_resource type="Texture2D" uid="uid://brsw3fkp5mx64" path="res://hex stuff/d4.png" id="7_7nkik"]
+[ext_resource type="Texture2D" uid="uid://3y2pn55abb6x" path="res://hex stuff/d5.png" id="8_nuo3n"]
+[ext_resource type="Texture2D" uid="uid://cp0fvtgpxidcx" path="res://hex stuff/d6.png" id="9_dr6jq"]
+[ext_resource type="Script" uid="uid://bcov6g18r0j5w" path="res://hex stuff/gameover.gd" id="12_mxfnm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5lwy"]
+texture = ExtResource("1_ei64t")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ei64t"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(128, 111)
+sources/2 = SubResource("TileSetAtlasSource_i5lwy")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i5lwy"]
+load_path = "res://.godot/imported/hextile.png-40b47a6a3d87cb536778ab02d3530787.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc8ok"]
+texture = SubResource("CompressedTexture2D_i5lwy")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4ed8p"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(128, 111)
+sources/0 = SubResource("TileSetAtlasSource_fc8ok")
+
+[node name="Node2D" type="Node2D" unique_id=1279603025 node_paths=PackedStringArray("tilemap")]
+script = ExtResource("1_ffuv8")
+tilemap = NodePath("layer")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=114593868]
+offset = Vector2(56, 56)
+zoom = Vector2(0.9, 0.9)
+
+[node name="TileMap" type="TileMap" parent="." unique_id=327923456]
+texture_filter = 1
+tile_set = SubResource("TileSet_ei64t")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 2, 0, -65536, 2, 0, -1, 2, 0, 65535, 2, 0, 65536, 2, 0, 1, 2, 0, -65535, 2, 0, -131071, 2, 0, -131072, 2, 0, -65537, 2, 0, -2, 2, 0, 65534, 2, 0, 131070, 2, 0, 131071, 2, 0, 131072, 2, 0, 65537, 2, 0, 2, 2, 0, -65534, 2, 0, 65538, 2, 0, -196608, 2, 0, -131073, 2, 0, -65538, 2, 0, -65539, 2, 0, -3, 2, 0, 65533, 2, 0, 131069, 2, 0, 196606, 2, 0, 196607, 2, 0, 196608, 2, 0, 131073, 2, 0, 131074, 2, 0, 65539, 2, 0, 3, 2, 0, -65533, 2, 0, -131069, 2, 0, -131070, 2, 0, -196607, 2, 0)
+
+[node name="layer" type="TileMapLayer" parent="." unique_id=290644159]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD9/wEAAgAAAAAAAAD+/wIAAgAAAAAAAAD//wIAAgAAAAAAAAAAAAMAAgAAAAAAAAABAAIAAgAAAAAAAAACAAIAAgAAAAAAAAADAAEAAgAAAAAAAAD//wEAAgAAAAAAAAD+/wEAAgAAAAAAAAD9/wAAAgAAAAAAAAAAAAIAAgAAAAAAAAABAAEAAgAAAAAAAAACAAEAAgAAAAAAAAADAAAAAgAAAAAAAAD9////AgAAAAAAAAD+/wAAAgAAAAAAAAD//wAAAgAAAAAAAAAAAAEAAgAAAAAAAAABAAAAAgAAAAAAAAACAAAAAgAAAAAAAAADAP//AgAAAAAAAAD9//7/AgAAAAAAAAD+////AgAAAAAAAAD/////AgAAAAAAAAAAAAAAAgAAAAAAAAABAP//AgAAAAAAAAACAP//AgAAAAAAAAADAP7/AgAAAAAAAAD+//7/AgAAAAAAAAD///7/AgAAAAAAAAAAAP//AgAAAAAAAAABAP7/AgAAAAAAAAACAP7/AgAAAAAAAAD///3/AgAAAAAAAAAAAP7/AgAAAAAAAAAAAP3/AgAAAAAAAAABAP3/AgAAAAAAAAA=")
+tile_set = SubResource("TileSet_ei64t")
+
+[node name="Highlightgreen" type="TileMap" parent="." unique_id=1955941178]
+modulate = Color(0.6, 0.8980392, 0.3137255, 1)
+z_index = 1
+texture_filter = 1
+tile_set = SubResource("TileSet_4ed8p")
+format = 2
+layer_0/modulate = Color(0.6, 0.8980392, 0.3137255, 1)
+layer_0/z_index = 1
+layer_0/tile_data = PackedInt32Array(-196608, 1, 0, -131073, 1, 0, -65538, 1, 0, -65539, 1, 0, -3, 1, 0, -2, 1, 0, -65537, 1, 0, -131072, 1, 0, -196607, 1, 0, -131070, 1, 0, -131069, 1, 0, -65533, 1, 0, -65534, 1, 0, -131071, 1, 0, -65536, 1, 0, -65535, 1, 0, 2, 1, 0, 3, 1, 0, 65538, 1, 0, 65539, 1, 0, 1, 1, 0, 0, 1, 0, -1, 1, 0, 65536, 1, 0, 65535, 1, 0, 65534, 1, 0, 65537, 1, 0, 131074, 1, 0, 131073, 1, 0, 131072, 1, 0, 131071, 1, 0, 131070, 1, 0, 65533, 1, 0, 131069, 1, 0, 196606, 1, 0, 196607, 1, 0, 196608, 1, 0)
+
+[node name="Highlightred" type="TileMap" parent="." unique_id=427231872]
+modulate = Color(0.6745098, 0.19607843, 0.19607843, 1)
+z_index = 1
+texture_filter = 1
+tile_set = SubResource("TileSet_4ed8p")
+format = 2
+layer_0/modulate = Color(0.6745098, 0.19607843, 0.19607843, 1)
+layer_0/z_index = 1
+layer_0/tile_data = PackedInt32Array(-196608, 1, 0, -131073, 1, 0, -65538, 1, 0, -65539, 1, 0, -3, 1, 0, -2, 1, 0, -65537, 1, 0, -131072, 1, 0, -196607, 1, 0, -131070, 1, 0, -131069, 1, 0, -65533, 1, 0, -65534, 1, 0, -131071, 1, 0, -65536, 1, 0, -65535, 1, 0, 2, 1, 0, 3, 1, 0, 65538, 1, 0, 65539, 1, 0, 1, 1, 0, 0, 1, 0, -1, 1, 0, 65536, 1, 0, 65535, 1, 0, 65534, 1, 0, 65537, 1, 0, 131074, 1, 0, 131073, 1, 0, 131072, 1, 0, 131071, 1, 0, 131070, 1, 0, 65533, 1, 0, 131069, 1, 0, 196606, 1, 0, 196607, 1, 0, 196608, 1, 0)
+
+[node name="Player" parent="." unique_id=685893003 node_paths=PackedStringArray("tilemap", "highlightgreen", "highlightred", "layer") instance=ExtResource("2_i5lwy")]
+tilemap = NodePath("../TileMap")
+highlightgreen = NodePath("../Highlightgreen")
+highlightred = NodePath("../Highlightred")
+layer = NodePath("../layer")
+
+[node name="Marker" type="Node2D" parent="." unique_id=686776827 node_paths=PackedStringArray("tilemap")]
+script = ExtResource("3_7nkik")
+tilemap = NodePath("../TileMap")
+
+[node name="UI" type="Node2D" parent="." unique_id=1919692476 node_paths=PackedStringArray("die_sprite", "actions_label")]
+position = Vector2(-600, 128)
+script = ExtResource("3_mu5m0")
+die_sprite = NodePath("Die")
+die_faces = Array[Texture2D]([ExtResource("4_ei8ir"), ExtResource("5_ffuv8"), ExtResource("6_mxfnm"), ExtResource("7_7nkik"), ExtResource("8_nuo3n"), ExtResource("9_dr6jq")])
+actions_label = NodePath("Actions")
+
+[node name="Actions" type="Label" parent="UI" unique_id=124278698]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_right = 256.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_fc8ok")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="Die" type="Sprite2D" parent="UI" unique_id=1428179529]
+position = Vector2(128, 160)
+scale = Vector2(0.5, 0.5)
+
+[node name="GameOver" type="Control" parent="." unique_id=380529899]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_mxfnm")
+
+[node name="Label" type="Label" parent="GameOver" unique_id=11949591]
+layout_mode = 0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 224.0
+offset_bottom = -20.0
+theme_override_fonts/font = ExtResource("3_fc8ok")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="GameOver" unique_id=1811325502]
+process_mode = 3
+layout_mode = 0
+offset_left = -100.0
+offset_top = 200.0
+offset_right = 224.0
+offset_bottom = 280.0
+text = "Restart"
+
+[node name="enemies" type="Node2D" parent="." unique_id=1291798679]
