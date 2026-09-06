@@ -23,6 +23,11 @@ func _on_restart_pressed() -> void:
 	get_tree().paused = false
 	GameManager.score = 0
 	GameManager.is_game_over = false
+	EnemyManager.enemies.clear()
+	EnemyManager.pending_spawn_cells.clear()
+	EnemyManager.killed_cells.clear()
+	EnemyManager.wave_announced_this_turn = false
+	EnemyManager.wave_cleared_pending = false
 	_clear_all_highlights_on_restart()
 	get_tree().reload_current_scene()
 

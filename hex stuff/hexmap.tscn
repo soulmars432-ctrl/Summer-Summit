@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cu5cxxyyte5i6" path="res://hex stuff/hexmap.gd" id="1_ffuv8"]
 [ext_resource type="Texture2D" uid="uid://d0o7ms871veds" path="res://img/ground_tile.png" id="2_dr6jq"]
 [ext_resource type="PackedScene" uid="uid://bbe30hps30tvu" path="res://player.tscn" id="2_i5lwy"]
-[ext_resource type="Script" path="res://hex stuff/marker.gd" id="3_7nkik"]
+[ext_resource type="Script" uid="uid://fn8mg0nkdbic" path="res://hex stuff/marker.gd" id="3_7nkik"]
 [ext_resource type="FontFile" uid="uid://c1sxqk3386riu" path="res://hex stuff/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf" id="3_fc8ok"]
 [ext_resource type="Script" uid="uid://cprmevwyv26gh" path="res://hex stuff/actions.gd" id="3_mu5m0"]
 [ext_resource type="Texture2D" uid="uid://bei58hknn7o13" path="res://hex stuff/d1.png" id="4_ei8ir"]
@@ -12,10 +12,18 @@
 [ext_resource type="Texture2D" uid="uid://bolqmxja825wt" path="res://img/safe tile 2.png" id="4_v3wj0"]
 [ext_resource type="Texture2D" uid="uid://dtgq57m0vmyfb" path="res://hex stuff/d2.png" id="5_ffuv8"]
 [ext_resource type="Script" uid="uid://d21oc8k11wcyu" path="res://hex stuff/score.gd" id="5_nuo3n"]
+[ext_resource type="Texture2D" uid="uid://hajuq8yxj3l" path="res://img/tile/slain enemy safe tile 1.png" id="6_6luq0"]
 [ext_resource type="Texture2D" uid="uid://dkc8wd6q5o0wb" path="res://hex stuff/d3.png" id="6_mxfnm"]
+[ext_resource type="Texture2D" uid="uid://s1ruu3kk7gqt" path="res://img/tile/safe tile 1.png" id="6_u6gt7"]
+[ext_resource type="Texture2D" uid="uid://bnxs10qv0gly8" path="res://img/tile/slain enemy safe tile 2.png" id="7_7gnqv"]
 [ext_resource type="Texture2D" uid="uid://brsw3fkp5mx64" path="res://hex stuff/d4.png" id="7_7nkik"]
+[ext_resource type="Texture2D" uid="uid://rqiwd8p0ed23" path="res://img/tile/safe tile 2.png" id="7_y1n2r"]
+[ext_resource type="Texture2D" uid="uid://dxgqmh8yjv5ep" path="res://img/tile/unsafe tile 1.png" id="8_6qy82"]
 [ext_resource type="Texture2D" uid="uid://3y2pn55abb6x" path="res://hex stuff/d5.png" id="8_nuo3n"]
+[ext_resource type="Texture2D" uid="uid://mg5fajjj27f7" path="res://img/tile/unsafe tile 2.png" id="9_3dl4x"]
 [ext_resource type="Texture2D" uid="uid://cp0fvtgpxidcx" path="res://hex stuff/d6.png" id="9_dr6jq"]
+[ext_resource type="Texture2D" uid="uid://bp48dg30qdjx3" path="res://img/tile/slain enemy unsafe tile 1.png" id="10_u6gt7"]
+[ext_resource type="Texture2D" uid="uid://b373kdedpxy0d" path="res://img/tile/slain enemy unsafe tile 2.png" id="11_y1n2r"]
 [ext_resource type="Script" uid="uid://bcov6g18r0j5w" path="res://hex stuff/gameover.gd" id="12_mxfnm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hbit7"]
@@ -59,8 +67,63 @@ sources/6 = SubResource("TileSetAtlasSource_7gnqv")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hbit7"]
 shader = ExtResource("4_hbit7")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lit6"]
+texture = ExtResource("6_u6gt7")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4lyrf"]
+texture = ExtResource("7_y1n2r")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ypghl"]
+texture = ExtResource("6_6luq0")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dhw3q"]
+texture = ExtResource("7_7gnqv")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i5lwy"]
 load_path = "res://.godot/imported/hextile.png-40b47a6a3d87cb536778ab02d3530787.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6qy82"]
+texture = SubResource("CompressedTexture2D_i5lwy")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3dl4x"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(128, 111)
+sources/4 = SubResource("TileSetAtlasSource_6qy82")
+sources/3 = SubResource("TileSetAtlasSource_dhw3q")
+sources/2 = SubResource("TileSetAtlasSource_ypghl")
+sources/0 = SubResource("TileSetAtlasSource_5lit6")
+sources/1 = SubResource("TileSetAtlasSource_4lyrf")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tkplo"]
+texture = ExtResource("8_6qy82")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mhygs"]
+texture = ExtResource("9_3dl4x")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g403w"]
+texture = ExtResource("10_u6gt7")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pysxu"]
+texture = ExtResource("11_y1n2r")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc8ok"]
 texture = SubResource("CompressedTexture2D_i5lwy")
@@ -71,7 +134,11 @@ texture_region_size = Vector2i(128, 111)
 tile_shape = 3
 tile_offset_axis = 1
 tile_size = Vector2i(128, 111)
-sources/0 = SubResource("TileSetAtlasSource_fc8ok")
+sources/4 = SubResource("TileSetAtlasSource_fc8ok")
+sources/0 = SubResource("TileSetAtlasSource_tkplo")
+sources/1 = SubResource("TileSetAtlasSource_mhygs")
+sources/2 = SubResource("TileSetAtlasSource_g403w")
+sources/3 = SubResource("TileSetAtlasSource_pysxu")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3wj0"]
 bg_color = Color(0.24705882, 0.24705882, 0.45490196, 1)
@@ -124,7 +191,7 @@ texture_filter = 1
 tile_set = SubResource("TileSet_ei64t")
 rendering_quadrant_size = 128
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 6, 0, -65536, 6, 0, -1, 2, 0, 65535, 2, 0, 65536, 6, 0, 1, 2, 0, -65535, 2, 0, -131071, 2, 0, -131072, 2, 0, -65537, 2, 0, -2, 6, 0, 65534, 6, 0, 131070, 6, 0, 131071, 2, 0, 131072, 6, 0, 65537, 2, 0, 2, 6, 0, -65534, 2, 0, 65538, 6, 0, -196608, 2, 0, -131073, 6, 0, -65538, 2, 0, -65539, 6, 0, -3, 2, 0, 65533, 6, 0, 131069, 2, 0, 196606, 2, 0, 196607, 6, 0, 196608, 2, 0, 131073, 6, 0, 131074, 6, 0, 65539, 2, 0, 3, 6, 0, -65533, 2, 0, -131069, 6, 0, -131070, 2, 0, -196607, 6, 0)
+layer_0/tile_data = PackedInt32Array(-1, 3, 0, 65535, 3, 0, 1, 3, 0, -65535, 3, 0, -131071, 3, 0, -131072, 3, 0, -65537, 3, 0, -2, 3, 0, 65534, 3, 0, 131070, 3, 0, 131071, 3, 0, 65537, 3, 0, -65534, 3, 0, -196608, 3, 0, -131073, 3, 0, -65538, 3, 0, -65539, 3, 0, -3, 3, 0, 65533, 3, 0, 131069, 3, 0, 196606, 3, 0, 196608, 3, 0, 65539, 3, 0, -65533, 3, 0, -131069, 3, 0, -131070, 3, 0, -196607, 3, 0, -65536, 3, 0, 0, 3, 0, 65536, 3, 0, 131072, 3, 0, 196607, 3, 0, 131073, 3, 0, 131074, 3, 0, 65538, 3, 0, 3, 3, 0, 2, 3, 0)
 
 [node name="layer" type="TileMapLayer" parent="." unique_id=290644159]
 visible = false
@@ -134,32 +201,25 @@ tile_map_data = PackedByteArray("AAD9/wEAAgAAAAAAAAD+/wIAAgAAAAAAAAD//wIAAgAAAAA
 tile_set = SubResource("TileSet_ei64t")
 
 [node name="Highlightgreen" type="TileMap" parent="." unique_id=1955941178]
-modulate = Color(0.6, 0.8980392, 0.3137255, 1)
 z_index = 1
 texture_filter = 1
-tile_set = SubResource("TileSet_4ed8p")
+tile_set = SubResource("TileSet_3dl4x")
 format = 2
-layer_0/modulate = Color(0.6, 0.8980392, 0.3137255, 1)
 layer_0/z_index = 1
-layer_0/tile_data = PackedInt32Array(-196608, 1, 0, -131073, 1, 0, -65538, 1, 0, -65539, 1, 0, -3, 1, 0, -2, 1, 0, -65537, 1, 0, -131072, 1, 0, -196607, 1, 0, -131070, 1, 0, -131069, 1, 0, -65533, 1, 0, -65534, 1, 0, -131071, 1, 0, -65536, 1, 0, -65535, 1, 0, 2, 1, 0, 3, 1, 0, 65538, 1, 0, 65539, 1, 0, 1, 1, 0, 0, 1, 0, -1, 1, 0, 65536, 1, 0, 65535, 1, 0, 65534, 1, 0, 65537, 1, 0, 131074, 1, 0, 131073, 1, 0, 131072, 1, 0, 131071, 1, 0, 131070, 1, 0, 65533, 1, 0, 131069, 1, 0, 196606, 1, 0, 196607, 1, 0, 196608, 1, 0)
 
 [node name="Highlightred" type="TileMap" parent="." unique_id=427231872]
-modulate = Color(0.6745098, 0.19607843, 0.19607843, 1)
 z_index = 1
 texture_filter = 1
 tile_set = SubResource("TileSet_4ed8p")
 format = 2
-layer_0/modulate = Color(0.6745098, 0.19607843, 0.19607843, 1)
 layer_0/z_index = 1
-layer_0/tile_data = PackedInt32Array(-196608, 1, 0, -131073, 1, 0, -65538, 1, 0, -65539, 1, 0, -3, 1, 0, -2, 1, 0, -65537, 1, 0, -131072, 1, 0, -196607, 1, 0, -131070, 1, 0, -131069, 1, 0, -65533, 1, 0, -65534, 1, 0, -131071, 1, 0, -65536, 1, 0, -65535, 1, 0, 2, 1, 0, 3, 1, 0, 65538, 1, 0, 65539, 1, 0, 1, 1, 0, 0, 1, 0, -1, 1, 0, 65536, 1, 0, 65535, 1, 0, 65534, 1, 0, 65537, 1, 0, 131074, 1, 0, 131073, 1, 0, 131072, 1, 0, 131071, 1, 0, 131070, 1, 0, 65533, 1, 0, 131069, 1, 0, 196606, 1, 0, 196607, 1, 0, 196608, 1, 0)
 
-[node name="Player" parent="." unique_id=685893003 node_paths=PackedStringArray("tilemap", "highlightgreen", "highlightred", "layer") instance=ExtResource("2_i5lwy")]
+[node name="Player" parent="." unique_id=685893003 node_paths=PackedStringArray("tilemap", "highlightgreen", "highlightred") instance=ExtResource("2_i5lwy")]
 z_index = 3
 scale = Vector2(0.25, 0.25)
-tilemap = NodePath("../TileMap")
+tilemap = NodePath("../layer")
 highlightgreen = NodePath("../Highlightgreen")
 highlightred = NodePath("../Highlightred")
-layer = NodePath("../layer")
 
 [node name="Marker" type="Node2D" parent="." unique_id=686776827 node_paths=PackedStringArray("tilemap")]
 z_index = 4
@@ -201,6 +261,8 @@ scale = Vector2(0.5, 0.5)
 
 [node name="GameOver" type="Control" parent="." unique_id=380529899]
 process_mode = 3
+visible = false
+z_index = 4
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

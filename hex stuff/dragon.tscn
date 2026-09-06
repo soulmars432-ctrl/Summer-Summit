@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dw2e57aw0iwi4" path="res://dragon.png" id="2_4n7gc"]
 
 [node name="Enemy" type="Node2D" unique_id=1320795149]
+z_index = 2
 rotation = 1.5707964
 scale = Vector2(0.23, 0.23)
 script = ExtResource("1_4n7gc")

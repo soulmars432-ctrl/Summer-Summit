@@ -11,6 +11,7 @@ var orc_scene: PackedScene = preload("res://hex stuff/orc.tscn")
 var pending_spawn_cells: Array = []
 var wave_announced_this_turn: bool = false
 var wave_cleared_pending: bool = false
+var killed_cells: Array = []
 signal wave_incoming(spawn_cells)
 signal wave_started
 
@@ -20,6 +21,9 @@ func _ready() -> void:
 func _on_turn_started(state) -> void:
 	if state == TurnManager.State.Enemyturn:
 		step_all_enemies_toward_player(player.cell, tilemap)
+
+func clear_killed_cells() -> void:
+	killed_cells.clear()
 
 func step_all_enemies_toward_player(player_cell: Vector2i, tilemap: TileMapLayer) -> void:
 	var old_positions = enemies.duplicate()
@@ -69,6 +73,7 @@ func kill(enemy: Node2D) -> void:
 	var cells = _find_cell_for(enemy)
 	for cell in cells:
 		enemies.erase(cell)
+		killed_cells.append(cell)
 	enemy.queue_free()
 	GameManager.add_score()
 	if enemies.is_empty():
