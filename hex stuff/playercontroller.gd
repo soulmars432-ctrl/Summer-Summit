@@ -3,6 +3,8 @@ class_name Playercontroller
 @export var tilemap: TileMapLayer
 @export var highlightgreen: TileMap
 @export var highlightred: TileMap
+@export var highlight: TileMap
+
 var cell: Vector2i
 var cell_variant_cache: Dictionary = {}
 const highlightcoords = Vector2i(0, 0)
@@ -12,6 +14,7 @@ const slainunsafe = 2
 const tilecoord = Vector2i(0, 0)
 
 func _ready() -> void:
+	TurnManager.camera_2d = $"../Camera2D"
 	TurnManager.turn_started.connect(_on_turn_started)
 	EnemyManager.tilemap = tilemap
 	EnemyManager.player = self

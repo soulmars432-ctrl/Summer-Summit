@@ -11,6 +11,7 @@ signal action_taken(actions_left)
 signal player_turn_end
 signal enemy_turn_end
 signal roll_requested(final_value)
+var camera_2d: Camera2D
 
 func rolldie() -> int:
 	var nums = [1,1,1,1,1,2,2,2,2,2,2,2,2,3,3,3,3,4,5,6]
@@ -30,6 +31,7 @@ func start_player_turn() -> void:
 func spend_action() -> void:
 	if state != State.Playerturn or actions_remaining <= 0:
 		return
+	camera_2d.add_trauma(0.5)
 	actions_remaining -= 1
 	action_taken.emit(actions_remaining)
 	if actions_remaining == 0:
@@ -46,9 +48,12 @@ func end_player_turn() -> void:
 	start_enemy_turn()
 
 func start_enemy_turn() -> void:
+	
 	state = State.Enemyturn
 	turn_started.emit(state)
 	#enemymanager stuff
+	camera_2d.add_trauma(10.0)
+	
 
 func end_enemy_turn() -> void:
 	enemy_turn_end.emit()

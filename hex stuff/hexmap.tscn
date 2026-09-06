@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://chcl41b6cchj" path="res://hex stuff/hextile.png" id="1_ei64t"]
 [ext_resource type="Script" uid="uid://cu5cxxyyte5i6" path="res://hex stuff/hexmap.gd" id="1_ffuv8"]
+[ext_resource type="Script" uid="uid://booepe08bdue7" path="res://hex stuff/camera_2d.gd" id="2_bigev"]
 [ext_resource type="Texture2D" uid="uid://d0o7ms871veds" path="res://img/ground_tile.png" id="2_dr6jq"]
 [ext_resource type="Texture2D" uid="uid://c31qxvuqup7hp" path="res://hex stuff/background.png" id="2_g403w"]
 [ext_resource type="PackedScene" uid="uid://bbe30hps30tvu" path="res://player.tscn" id="2_i5lwy"]
@@ -52,16 +53,6 @@ font_size = 36
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hbit7"]
 texture = ExtResource("2_dr6jq")
-texture_region_size = Vector2i(128, 111)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nw5c6"]
-texture = ExtResource("8_l8vwd")
-texture_region_size = Vector2i(128, 111)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_80ejy"]
-texture = ExtResource("9_bigev")
 texture_region_size = Vector2i(128, 111)
 0:0/0 = 0
 
@@ -249,9 +240,10 @@ script = ExtResource("1_ffuv8")
 tilemap = NodePath("layer")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=114593868]
-position = Vector2(0, -16)
+position = Vector2(56, 32)
 offset = Vector2(56, 56)
 zoom = Vector2(0.875, 0.875)
+script = ExtResource("2_bigev")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1177977671]
 position = Vector2(54.000015, 49)
