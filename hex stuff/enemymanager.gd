@@ -29,6 +29,8 @@ func step_all_enemies_toward_player(player_cell: Vector2i, tilemap: TileMapLayer
 	var old_positions = enemies.duplicate()
 	enemies.clear()
 	var claimed_cells = {}
+	for c in old_positions.keys():
+		claimed_cells[c] = true
 
 	for cell in old_positions.keys():
 		var enemy = old_positions[cell]
@@ -37,8 +39,9 @@ func step_all_enemies_toward_player(player_cell: Vector2i, tilemap: TileMapLayer
 		if enemy.just_spawned:
 			enemy.just_spawned = false
 			enemies[cell] = enemy
-			claimed_cells[cell] = true
 			continue
+
+		claimed_cells.erase(cell)
 
 		var next_cell: Vector2i
 		if enemy.is_dragon:
