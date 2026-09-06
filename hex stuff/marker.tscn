@@ -1,9 +1,41 @@
 [gd_scene format=3 uid="uid://8johh4jxstf5"]
 
-[ext_resource type="Texture2D" uid="uid://cxjd00dmmw10s" path="res://hex stuff/cross_mark.png" id="1_6mx70"]
+[ext_resource type="Texture2D" uid="uid://ckfaiakl6574l" path="res://hex stuff/dragon_marker.png" id="1_5sqbv"]
+[ext_resource type="Texture2D" uid="uid://bgx3y67b6qi75" path="res://hex stuff/goblin (1).png" id="2_xb0so"]
+[ext_resource type="Texture2D" uid="uid://drdypn3dc4m0p" path="res://hex stuff/orc_marker.png" id="3_r1gfo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hlyk5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5sqbv")
+}],
+"loop": true,
+"name": &"dragon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xb0so")
+}],
+"loop": true,
+"name": &"goblin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_r1gfo")
+}],
+"loop": true,
+"name": &"orc",
+"speed": 5.0
+}]
 
 [node name="Marker" type="Node2D" unique_id=449214321]
-scale = Vector2(2, 2)
+modulate = Color(1.8984075, 0, 0, 0.84313726)
+z_index = -1
+scale = Vector2(0.5, 0.5)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1148438314]
-texture = ExtResource("1_6mx70")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=676455126]
+sprite_frames = SubResource("SpriteFrames_hlyk5")
+animation = &"goblin"

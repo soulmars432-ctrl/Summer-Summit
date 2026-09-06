@@ -9,6 +9,7 @@ var goblin_scene: PackedScene = preload("res://hex stuff/enemy.tscn")
 var dragon_scene: PackedScene = preload("res://hex stuff/dragon.tscn")
 var orc_scene: PackedScene = preload("res://hex stuff/orc.tscn")
 var pending_spawn_cells: Array = []
+var all_enemy_spawn:Array = []
 var wave_announced_this_turn: bool = false
 var wave_cleared_pending: bool = false
 var wave_num:int = 1
@@ -162,24 +163,34 @@ func announce_next_wave(count: int, valid_cells: Array, exclude: Array = []) -> 
 		if c in exclude:
 			continue
 		pending_spawn_cells.append(c)
-	wave_incoming.emit(pending_spawn_cells)
-
-func spawn_pending_wave() -> void:
 	for cell in pending_spawn_cells:
 		var rand = randf()
-		var scene = goblin_scene
+		var scene = "goblin"
 		if rand < 0.5:
-			scene = goblin_scene
+			scene = "goblin"
 		elif rand < 0.8:
+			scene = "orc"
+		else:
+			scene = "dragon"
+		all_enemy_spawn.append(scene)
+	
+	wave_incoming.emit(pending_spawn_cells, all_enemy_spawn)
+
+func spawn_pending_wave() -> void:
+	for i in range(pending_spawn_cells.size()):
+		var scene = goblin_scene
+		if all_enemy_spawn[i] == "goblin":
+			scene = goblin_scene
+		elif all_enemy_spawn[i] == "orc":
 			scene = orc_scene
 		else:
 			scene = dragon_scene
 		var enemy = scene.instantiate()
 		enemy_parent.add_child(enemy)
-		enemy.place_at(cell, tilemap)
-		register_enemy(enemy, cell)
+		enemy.place_at(pending_spawn_cells[i], tilemap)
+		register_enemy(enemy, pending_spawn_cells[i])
 
-		if cell == player.cell:
+		if pending_spawn_cells[i] == player.cell:
 			GameManager.player_died()
 
 	pending_spawn_cells.clear()

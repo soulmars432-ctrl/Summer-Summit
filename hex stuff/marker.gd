@@ -7,12 +7,13 @@ func _ready() -> void:
 	EnemyManager.wave_incoming.connect(_on_wave_incoming)
 	EnemyManager.wave_started.connect(_clear_markers)
 
-func _on_wave_incoming(spawn_cells: Array) -> void:
+func _on_wave_incoming(spawn_cells: Array, type: Array) -> void:
 	_clear_markers()
-	for cell in spawn_cells:
+	for i in range(spawn_cells.size()):
 		var marker = marker_scene.instantiate()
 		add_child(marker)
-		marker.position = tilemap.map_to_local(cell)
+		marker.position = tilemap.map_to_local(spawn_cells[i])
+		marker.get_child(0).play(type[i])
 		active_markers.append(marker)
 
 func _clear_markers() -> void:
