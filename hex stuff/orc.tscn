@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bt5vwa2tb2bkg"]
+
+[ext_resource type="Script" uid="uid://cgb0iomwcgowi" path="res://hex stuff/enemy.gd" id="1_nblnd"]
+[ext_resource type="Texture2D" uid="uid://b1kpt1lcr5h1w" path="res://orc.png" id="2_nblnd"]
+
+[node name="Enemy" type="Node2D" unique_id=1320795149]
+script = ExtResource("1_nblnd")
+is_orc = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1897728430]
+z_index = 3
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_nblnd")

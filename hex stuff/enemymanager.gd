@@ -7,6 +7,7 @@ var enemy_parent: Node
 var player: Playercontroller
 var goblin_scene: PackedScene = preload("res://hex stuff/enemy.tscn")
 var dragon_scene: PackedScene = preload("res://hex stuff/dragon.tscn")
+var orc_scene: PackedScene = preload("res://hex stuff/orc.tscn")
 var pending_spawn_cells: Array = []
 var wave_announced_this_turn: bool = false
 var wave_cleared_pending: bool = false
@@ -151,7 +152,14 @@ func announce_next_wave(count: int, valid_cells: Array, exclude: Array = []) -> 
 
 func spawn_pending_wave() -> void:
 	for cell in pending_spawn_cells:
-		var scene = dragon_scene if randf() < 0.3 else goblin_scene
+		var rand = randf()
+		var scene = goblin_scene
+		if rand < 0.7 and rand > 0.4:
+			scene = dragon_scene
+		elif rand <= 0.4:
+			scene = orc_scene
+		else:
+			scene = goblin_scene
 		var enemy = scene.instantiate()
 		enemy_parent.add_child(enemy)
 		enemy.place_at(cell, tilemap)
