@@ -11,6 +11,7 @@ var orc_scene: PackedScene = preload("res://hex stuff/orc.tscn")
 var pending_spawn_cells: Array = []
 var wave_announced_this_turn: bool = false
 var wave_cleared_pending: bool = false
+var wave_num:int = 1
 var killed_cells: Array = []
 signal wave_incoming(spawn_cells)
 signal wave_started
@@ -151,6 +152,7 @@ func _hex_distance(a: Vector2i, b: Vector2i) -> int:
 	return (abs(dq) + abs(dr) + abs(dq + dr)) / 2
 
 func announce_next_wave(count: int, valid_cells: Array, exclude: Array = []) -> void:
+	wave_num += 1
 	pending_spawn_cells.clear()
 	var candidates = valid_cells.duplicate()
 	candidates.shuffle()
@@ -187,7 +189,12 @@ func spawn_pending_wave() -> void:
 func try_announce_wave_if_cleared() -> void:
 	if wave_cleared_pending:
 		var valid_cells = tilemap.get_used_cells()
-		announce_next_wave(4, valid_cells)
+		var progress_bias: float = wave_num / (wave_num + 5.0)
+		# 2. Roll between your rising minimum bias and 1.0
+		var random_decimal: float = randf_range(progress_bias, 1.0)
+		# 3. Lerp across your target range (4.0 to 7.0)
+		var enemies: float = lerp(4.0, 7.0, random_decimal)
+		announce_next_wave(enemies, valid_cells)
 		wave_cleared_pending = false
 		wave_announced_this_turn = true
 

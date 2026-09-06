@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://brsw3fkp5mx64" path="res://hex stuff/d4.png" id="7_7nkik"]
 [ext_resource type="Texture2D" uid="uid://rqiwd8p0ed23" path="res://img/tile/safe tile 2.png" id="7_y1n2r"]
 [ext_resource type="Texture2D" uid="uid://dxgqmh8yjv5ep" path="res://img/tile/unsafe tile 1.png" id="8_6qy82"]
-[ext_resource type="Texture2D" uid="uid://br6nx67x00j80" path="res://panel.png" id="8_finug"]
 [ext_resource type="Texture2D" uid="uid://3y2pn55abb6x" path="res://hex stuff/d5.png" id="8_nuo3n"]
 [ext_resource type="Texture2D" uid="uid://mg5fajjj27f7" path="res://img/tile/unsafe tile 2.png" id="9_3dl4x"]
 [ext_resource type="Texture2D" uid="uid://cp0fvtgpxidcx" path="res://hex stuff/d6.png" id="9_dr6jq"]
@@ -29,6 +28,18 @@
 [ext_resource type="Script" uid="uid://bcov6g18r0j5w" path="res://hex stuff/gameover.gd" id="12_mxfnm"]
 [ext_resource type="Texture2D" uid="uid://buatlnkyfavwh" path="res://img/main_menu.png" id="18_7gnqv"]
 [ext_resource type="FontFile" uid="uid://ccuulr64qqs18" path="res://font/darinia/Darinia.ttf" id="19_finug"]
+[ext_resource type="Texture2D" uid="uid://etggk6oh5edp" path="res://sp.png" id="27_g403w"]
+
+[sub_resource type="Theme" id="Theme_mhygs"]
+default_font = ExtResource("19_finug")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pysxu"]
+texture = ExtResource("27_g403w")
+region_rect = Rect2(61, 25.5, 189, 133)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7gnqv"]
+font = ExtResource("19_finug")
+font_size = 36
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hbit7"]
 texture = ExtResource("2_dr6jq")
@@ -144,10 +155,6 @@ sources/1 = SubResource("TileSetAtlasSource_mhygs")
 sources/2 = SubResource("TileSetAtlasSource_g403w")
 sources/3 = SubResource("TileSetAtlasSource_pysxu")
 
-[sub_resource type="LabelSettings" id="LabelSettings_7gnqv"]
-font = ExtResource("19_finug")
-font_size = 36
-
 [sub_resource type="LabelSettings" id="LabelSettings_finug"]
 font = ExtResource("19_finug")
 font_size = 36
@@ -164,13 +171,48 @@ script = ExtResource("1_ffuv8")
 tilemap = NodePath("layer")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=114593868]
+position = Vector2(0, -16)
 offset = Vector2(56, 56)
-zoom = Vector2(0.9, 0.9)
+zoom = Vector2(0.875, 0.875)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1177977671]
 position = Vector2(54.000015, 49)
 scale = Vector2(1.14, 1.169)
 texture = ExtResource("2_g403w")
+
+[node name="Panel3" type="Panel" parent="." unique_id=1567306531]
+offset_left = 799.99994
+offset_top = 8.0
+offset_right = 1191.817
+offset_bottom = 395.15878
+rotation = 3.1528125
+theme = SubResource("Theme_mhygs")
+theme_override_styles/panel = SubResource("StyleBoxTexture_pysxu")
+
+[node name="Score" type="Label" parent="." unique_id=444486317]
+offset_left = 536.0
+offset_top = -248.0
+offset_right = 664.0
+offset_bottom = -120.0
+theme_override_fonts/font = ExtResource("3_fc8ok")
+theme_override_font_sizes/font_size = 64
+text = "0"
+label_settings = SubResource("LabelSettings_7gnqv")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_nuo3n")
+
+[node name="label" type="Label" parent="." unique_id=1989835197]
+offset_left = 520.0
+offset_top = -312.0
+offset_right = 688.0
+offset_bottom = -184.0
+theme_override_fonts/font = ExtResource("3_fc8ok")
+theme_override_font_sizes/font_size = 64
+text = "score:"
+label_settings = SubResource("LabelSettings_7gnqv")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TileMap" type="TileMap" parent="." unique_id=327923456]
 texture_filter = 1
@@ -217,63 +259,38 @@ tilemap = NodePath("../TileMap")
 [node name="Node2D" type="Node2D" parent="." unique_id=1776051953]
 position = Vector2(624, -208)
 
-[node name="Panel" type="Sprite2D" parent="." unique_id=1264623494]
-position = Vector2(624, -208)
-scale = Vector2(0.3, 0.27272728)
-texture = ExtResource("8_finug")
-
-[node name="Score" type="Label" parent="." unique_id=444486317]
-offset_left = 560.0
-offset_top = -248.0
-offset_right = 688.0
-offset_bottom = -120.0
-theme_override_fonts/font = ExtResource("3_fc8ok")
-theme_override_font_sizes/font_size = 64
-text = "0"
-label_settings = SubResource("LabelSettings_7gnqv")
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("5_nuo3n")
-
-[node name="label" type="Label" parent="." unique_id=1989835197]
-offset_left = 544.0
-offset_top = -312.0
-offset_right = 712.0
-offset_bottom = -184.0
-theme_override_fonts/font = ExtResource("3_fc8ok")
-theme_override_font_sizes/font_size = 64
-text = "score:"
-label_settings = SubResource("LabelSettings_7gnqv")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="UI" type="Node2D" parent="." unique_id=1919692476 node_paths=PackedStringArray("die_sprite", "actions_label")]
-position = Vector2(-600, 128)
+position = Vector2(-656, -360)
 script = ExtResource("3_mu5m0")
 die_sprite = NodePath("Die")
 die_faces = Array[Texture2D]([ExtResource("4_ei8ir"), ExtResource("5_ffuv8"), ExtResource("6_mxfnm"), ExtResource("7_7nkik"), ExtResource("8_nuo3n"), ExtResource("9_dr6jq")])
 actions_label = NodePath("Actions")
 
-[node name="Panel" type="Sprite2D" parent="UI" unique_id=1070409326]
-position = Vector2(128, 120)
-scale = Vector2(0.38, 0.38)
-texture = ExtResource("8_finug")
+[node name="Panel2" type="Panel" parent="UI" unique_id=1961505907]
+offset_left = -48.0
+offset_top = -16.0
+offset_right = 368.0
+offset_bottom = 376.0
+theme = SubResource("Theme_mhygs")
+theme_override_styles/panel = SubResource("StyleBoxTexture_pysxu")
 
 [node name="Actions" type="Label" parent="UI" unique_id=124278698]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_top = 32.0
-offset_right = 256.0
-offset_bottom = 96.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 296.0
+offset_bottom = 104.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_fc8ok")
 theme_override_font_sizes/font_size = 32
+text = "sdfs"
 label_settings = SubResource("LabelSettings_finug")
 horizontal_alignment = 1
 
 [node name="Die" type="Sprite2D" parent="UI" unique_id=1428179529]
-position = Vector2(128, 128)
+position = Vector2(168, 192)
 scale = Vector2(0.15, 0.25)
 
 [node name="GameOver" type="Control" parent="." unique_id=380529899]
