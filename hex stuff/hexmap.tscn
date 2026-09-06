@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cprmevwyv26gh" path="res://hex stuff/actions.gd" id="3_mu5m0"]
 [ext_resource type="Texture2D" uid="uid://bei58hknn7o13" path="res://hex stuff/d1.png" id="4_ei8ir"]
 [ext_resource type="Texture2D" uid="uid://dtgq57m0vmyfb" path="res://hex stuff/d2.png" id="5_ffuv8"]
+[ext_resource type="Script" uid="uid://d21oc8k11wcyu" path="res://hex stuff/score.gd" id="5_nuo3n"]
 [ext_resource type="Texture2D" uid="uid://dkc8wd6q5o0wb" path="res://hex stuff/d3.png" id="6_mxfnm"]
 [ext_resource type="Texture2D" uid="uid://brsw3fkp5mx64" path="res://hex stuff/d4.png" id="7_7nkik"]
 [ext_resource type="Texture2D" uid="uid://3y2pn55abb6x" path="res://hex stuff/d5.png" id="8_nuo3n"]
@@ -87,6 +88,17 @@ layer = NodePath("../layer")
 [node name="Marker" type="Node2D" parent="." unique_id=686776827 node_paths=PackedStringArray("tilemap")]
 script = ExtResource("3_7nkik")
 tilemap = NodePath("../TileMap")
+
+[node name="Score" type="Label" parent="." unique_id=444486317]
+offset_left = 600.0
+offset_top = -300.0
+offset_right = 728.0
+offset_bottom = -172.0
+theme_override_fonts/font = ExtResource("3_fc8ok")
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_nuo3n")
 
 [node name="UI" type="Node2D" parent="." unique_id=1919692476 node_paths=PackedStringArray("die_sprite", "actions_label")]
 position = Vector2(-600, 128)
