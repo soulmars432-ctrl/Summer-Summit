@@ -5,6 +5,8 @@ var cell: Vector2i
 var just_spawned: bool = true
 @export var is_dragon: bool = false
 @export var is_orc: bool = false
+var is_idle = true
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func place_at(new_cell: Vector2i, tilemap: TileMapLayer) -> void:
 	cell = new_cell

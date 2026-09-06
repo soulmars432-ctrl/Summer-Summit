@@ -1,13 +1,57 @@
 [gd_scene format=3 uid="uid://bd3lyi2g1aj7u"]
 
 [ext_resource type="Script" uid="uid://cgb0iomwcgowi" path="res://hex stuff/enemy.gd" id="1_4gyqm"]
-[ext_resource type="Texture2D" uid="uid://dpd25ksk03kew" path="res://goblin.png" id="2_qi2p4"]
+[ext_resource type="Texture2D" uid="uid://cvl4trxnlxste" path="res://img/characters/goblin/goblin idle frame 7 (reutrn to 1).png" id="2_o6iwd"]
+[ext_resource type="Texture2D" uid="uid://i8db4ih01aw" path="res://img/characters/goblin/goblin idle frame 1.png" id="3_gwnu5"]
+[ext_resource type="Texture2D" uid="uid://bequ6q84ia3ai" path="res://img/characters/goblin/goblin idle frame 2.png" id="4_qqlwv"]
+[ext_resource type="Texture2D" uid="uid://7alvgyr10slp" path="res://img/characters/goblin/goblin idle frame 3.png" id="5_hpnkg"]
+[ext_resource type="Texture2D" uid="uid://d1gxjtv76bqw1" path="res://img/characters/goblin/goblin idle frame 4.png" id="6_4i8cq"]
+[ext_resource type="Texture2D" uid="uid://blr3mafchdlx6" path="res://img/characters/goblin/goblin idle frame 5.png" id="7_h1gsd"]
+[ext_resource type="Texture2D" uid="uid://do0r7bgea468b" path="res://img/characters/goblin/goblin idle frame 6.png" id="8_bxipo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0vmjb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gwnu5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qqlwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hpnkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4i8cq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_h1gsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_bxipo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_o6iwd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o6iwd")
+}],
+"loop": false,
+"name": &"move",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="Node2D" unique_id=1320795149]
 z_index = 2
 script = ExtResource("1_4gyqm")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1897728430]
-z_index = 3
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_qi2p4")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=513641501]
+scale = Vector2(0.35, 0.35)
+sprite_frames = SubResource("SpriteFrames_0vmjb")
+animation = &"idle"
+autoplay = "idle"

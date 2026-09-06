@@ -1,13 +1,56 @@
 [gd_scene format=3 uid="uid://bt5vwa2tb2bkg"]
 
 [ext_resource type="Script" uid="uid://cgb0iomwcgowi" path="res://hex stuff/enemy.gd" id="1_nblnd"]
-[ext_resource type="Texture2D" uid="uid://b1kpt1lcr5h1w" path="res://orc.png" id="2_nblnd"]
+[ext_resource type="Texture2D" uid="uid://b1r6bm45t5fni" path="res://img/characters/orc/orc idle frame 1.png" id="2_o5cnx"]
+[ext_resource type="Texture2D" uid="uid://dj2ctwbaudbd8" path="res://img/characters/orc/orc idle frame 2.png" id="3_rfc4d"]
+[ext_resource type="Texture2D" uid="uid://c4w3gncpk0xpd" path="res://img/characters/orc/orc idle frame 3.png" id="4_rpdy5"]
+[ext_resource type="Texture2D" uid="uid://emqlqisolrxa" path="res://img/characters/orc/orc idle frame 4.png" id="5_lic1x"]
+[ext_resource type="Texture2D" uid="uid://c2rp81ggqyrvb" path="res://img/characters/orc/orc idle frame 6 (return to 1).png" id="6_brnv2"]
+[ext_resource type="Texture2D" uid="uid://ltt8oakv2qru" path="res://img/characters/orc/orc idle frame 5.png" id="7_4mm1l"]
+[ext_resource type="Texture2D" uid="uid://8e07ev53valm" path="res://img/characters/orc/orc.png" id="8_l6vli"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_44a5l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o5cnx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rfc4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rpdy5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lic1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_brnv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4mm1l")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_l6vli")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="Node2D" unique_id=1320795149]
 script = ExtResource("1_nblnd")
 is_orc = true
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1897728430]
-z_index = 3
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1509833160]
+z_index = 9
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_nblnd")
+sprite_frames = SubResource("SpriteFrames_44a5l")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.9523274
