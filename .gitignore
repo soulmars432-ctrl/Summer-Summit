@@ -5,3 +5,8 @@
 build (2).zip
 *.zip
 /builds
+builds/index.apple-touch-icon.png.import
+builds/index.html
+builds/index.icon.png.import
+builds/index.pck
+builds/index.png.import
