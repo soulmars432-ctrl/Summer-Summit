@@ -8,7 +8,7 @@ size = Vector2(40, 40)
 [node name="goblin" type="Area2D" unique_id=1835505381]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=957830579]
-scale = Vector2(2, 2)
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_dl46o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=111588693]

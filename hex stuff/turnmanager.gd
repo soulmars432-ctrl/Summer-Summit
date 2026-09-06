@@ -13,7 +13,8 @@ signal enemy_turn_end
 signal roll_requested(final_value)
 
 func rolldie() -> int:
-	return randi_range(1, 6)
+	var nums = [1,1,1,1,1,1,1,2,2,2,2,2,3,3,4,5,6]
+	return nums.pick_random()
 
 func start_player_turn() -> void:
 	state = State.Rolling
