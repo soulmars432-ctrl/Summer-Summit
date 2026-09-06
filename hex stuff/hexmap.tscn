@@ -85,44 +85,6 @@ sources/0 = SubResource("TileSetAtlasSource_hbit7")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pysxu"]
 shader = ExtResource("4_hbit7")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lit6"]
-texture = ExtResource("6_u6gt7")
-texture_region_size = Vector2i(128, 111)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4lyrf"]
-texture = ExtResource("7_y1n2r")
-texture_region_size = Vector2i(128, 111)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ypghl"]
-texture = ExtResource("6_6luq0")
-texture_region_size = Vector2i(128, 111)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dhw3q"]
-texture = ExtResource("7_7gnqv")
-texture_region_size = Vector2i(128, 111)
-0:0/0 = 0
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i5lwy"]
-load_path = "res://.godot/imported/hextile.png-40b47a6a3d87cb536778ab02d3530787.ctex"
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6qy82"]
-texture = SubResource("CompressedTexture2D_i5lwy")
-texture_region_size = Vector2i(128, 111)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_3dl4x"]
-tile_shape = 3
-tile_offset_axis = 1
-tile_size = Vector2i(128, 111)
-sources/4 = SubResource("TileSetAtlasSource_6qy82")
-sources/3 = SubResource("TileSetAtlasSource_dhw3q")
-sources/2 = SubResource("TileSetAtlasSource_ypghl")
-sources/0 = SubResource("TileSetAtlasSource_5lit6")
-sources/1 = SubResource("TileSetAtlasSource_4lyrf")
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tkplo"]
 texture = ExtResource("8_6qy82")
 texture_region_size = Vector2i(128, 111)
@@ -143,6 +105,9 @@ texture = ExtResource("11_y1n2r")
 texture_region_size = Vector2i(128, 111)
 0:0/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i5lwy"]
+load_path = "res://.godot/imported/hextile.png-40b47a6a3d87cb536778ab02d3530787.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc8ok"]
 texture = SubResource("CompressedTexture2D_i5lwy")
 texture_region_size = Vector2i(128, 111)
@@ -157,6 +122,41 @@ sources/0 = SubResource("TileSetAtlasSource_tkplo")
 sources/1 = SubResource("TileSetAtlasSource_mhygs")
 sources/2 = SubResource("TileSetAtlasSource_g403w")
 sources/3 = SubResource("TileSetAtlasSource_pysxu")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lit6"]
+texture = ExtResource("6_u6gt7")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4lyrf"]
+texture = ExtResource("7_y1n2r")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ypghl"]
+texture = ExtResource("6_6luq0")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dhw3q"]
+texture = ExtResource("7_7gnqv")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6qy82"]
+texture = SubResource("CompressedTexture2D_i5lwy")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3dl4x"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(128, 111)
+sources/4 = SubResource("TileSetAtlasSource_6qy82")
+sources/3 = SubResource("TileSetAtlasSource_dhw3q")
+sources/2 = SubResource("TileSetAtlasSource_ypghl")
+sources/0 = SubResource("TileSetAtlasSource_5lit6")
+sources/1 = SubResource("TileSetAtlasSource_4lyrf")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l8vwd"]
 texture = ExtResource("8_6qy82")
@@ -273,6 +273,13 @@ material = SubResource("ShaderMaterial_pysxu")
 tile_map_data = PackedByteArray("AAD9/wEAAgAAAAAAAAD+/wIAAgAAAAAAAAD//wIAAgAAAAAAAAAAAAMAAgAAAAAAAAABAAIAAgAAAAAAAAACAAIAAgAAAAAAAAADAAEAAgAAAAAAAAD//wEAAgAAAAAAAAD+/wEAAgAAAAAAAAD9/wAAAgAAAAAAAAAAAAIAAgAAAAAAAAABAAEAAgAAAAAAAAACAAEAAgAAAAAAAAADAAAAAgAAAAAAAAD9////AgAAAAAAAAD+/wAAAgAAAAAAAAD//wAAAgAAAAAAAAAAAAEAAgAAAAAAAAABAAAAAgAAAAAAAAACAAAAAgAAAAAAAAADAP//AgAAAAAAAAD9//7/AgAAAAAAAAD+////AgAAAAAAAAD/////AgAAAAAAAAAAAAAAAgAAAAAAAAABAP//AgAAAAAAAAACAP//AgAAAAAAAAADAP7/AgAAAAAAAAD+//7/AgAAAAAAAAD///7/AgAAAAAAAAAAAP//AgAAAAAAAAABAP7/AgAAAAAAAAACAP7/AgAAAAAAAAD///3/AgAAAAAAAAAAAP7/AgAAAAAAAAAAAP3/AgAAAAAAAAABAP3/AgAAAAAAAAA=")
 tile_set = SubResource("TileSet_ei64t")
 
+[node name="Highlightred" type="TileMap" parent="." unique_id=427231872]
+z_index = 1
+texture_filter = 1
+tile_set = SubResource("TileSet_4ed8p")
+format = 2
+layer_0/z_index = 1
+
 [node name="Highlightgreen" type="TileMap" parent="." unique_id=1955941178]
 modulate = Color(0.6, 0.8980392, 0.3137255, 1)
 z_index = 1
@@ -280,13 +287,6 @@ texture_filter = 1
 tile_set = SubResource("TileSet_3dl4x")
 format = 2
 layer_0/modulate = Color(0.6, 0.8980392, 0.3137255, 1)
-layer_0/z_index = 1
-
-[node name="Highlightred" type="TileMap" parent="." unique_id=427231872]
-z_index = 1
-texture_filter = 1
-tile_set = SubResource("TileSet_4ed8p")
-format = 2
 layer_0/z_index = 1
 
 [node name="HoverHighlight" type="TileMap" parent="." unique_id=1733277747]
