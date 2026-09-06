@@ -32,8 +32,6 @@ func _play_roll_animation(final_value: int) -> void:
 		tween.tween_callback(func(): die_sprite.texture = die_faces[fake_value])
 		tween.tween_property(die_sprite, "scale:x", 0.0, step_duration * 2)
 		tween.tween_property(die_sprite, "scale:x", 0.3, step_duration * 2)
-		#tween.parallel().tween_property(die_sprite, "rotation_degrees",
-			#die_sprite.rotation_degrees + randf_range(-25, 25), step_duration)
 	
 	tween.tween_callback(func(): die_sprite.texture = die_faces[final_value - 1])
 	tween.tween_property(die_sprite, "rotation_degrees", 0, 0.15).set_trans(Tween.TRANS_BACK)
