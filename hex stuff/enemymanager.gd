@@ -26,7 +26,8 @@ func step_all_enemies_toward_player(player_cell: Vector2i, tilemap: TileMapLayer
 
 	for cell in old_positions.keys():
 		var enemy = old_positions[cell]
-
+		if not enemy:
+			continue
 		if enemy.just_spawned:
 			enemy.just_spawned = false
 			enemies[cell] = enemy

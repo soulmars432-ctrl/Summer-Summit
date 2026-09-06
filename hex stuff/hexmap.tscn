@@ -138,3 +138,5 @@ offset_bottom = 280.0
 text = "Restart"
 
 [node name="enemies" type="Node2D" parent="." unique_id=1291798679]
+
+[connection signal="pressed" from="GameOver/Restart" to="GameOver" method="_on_restart_pressed"]
