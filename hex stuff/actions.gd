@@ -18,7 +18,7 @@ func _on_action_taken(actions_left: int) -> void:
 func _on_turn_started(state) -> void:
 	if state == TurnManager.State.Rolling:
 		actions_label.text = "Rolling..."
-		Audio.play(23,26)
+		Audio.play_dice()
 	elif state == TurnManager.State.Enemyturn:
 		actions_label.text = "Enemy turn..."
 
