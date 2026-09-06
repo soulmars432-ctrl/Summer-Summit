@@ -13,7 +13,6 @@ func _on_game_over(final_score: int) -> void:
 	score_label.modulate = _get_base_color(final_score)
 	visible = true
 	get_tree().paused = true
-	Audio.play(19,22)
 
 func _get_base_color(score: int) -> Color:
 	if score >= 10:

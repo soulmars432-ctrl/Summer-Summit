@@ -20,6 +20,7 @@ func _ready() -> void:
 			sounds.append(s)
 	add_child(sound_player)
 	add_child(music_player)
+	add_child(dice_player)
 	music_player.finished.connect(_on_music_finished)
 
 # Play sound
@@ -37,6 +38,7 @@ func play_dice() -> void:
 	var i = randi_range(23,26)
 	dice_player.stream = sounds[i]
 	dice_player.play()
+	print(dice_player.playing)
 
 func play_ambient(index: int) -> void:
 	music_player.stream = sounds[index]
