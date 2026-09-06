@@ -2,11 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://chcl41b6cchj" path="res://hex stuff/hextile.png" id="1_ei64t"]
 [ext_resource type="Script" uid="uid://cu5cxxyyte5i6" path="res://hex stuff/hexmap.gd" id="1_ffuv8"]
+[ext_resource type="Texture2D" uid="uid://d0o7ms871veds" path="res://img/ground_tile.png" id="2_dr6jq"]
 [ext_resource type="PackedScene" uid="uid://bbe30hps30tvu" path="res://player.tscn" id="2_i5lwy"]
-[ext_resource type="Script" uid="uid://fn8mg0nkdbic" path="res://hex stuff/marker.gd" id="3_7nkik"]
+[ext_resource type="Script" path="res://hex stuff/marker.gd" id="3_7nkik"]
 [ext_resource type="FontFile" uid="uid://c1sxqk3386riu" path="res://hex stuff/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf" id="3_fc8ok"]
 [ext_resource type="Script" uid="uid://cprmevwyv26gh" path="res://hex stuff/actions.gd" id="3_mu5m0"]
 [ext_resource type="Texture2D" uid="uid://bei58hknn7o13" path="res://hex stuff/d1.png" id="4_ei8ir"]
+[ext_resource type="Shader" uid="uid://bsjjg2xfcx55g" path="res://hex stuff/hexmap.gdshader" id="4_hbit7"]
 [ext_resource type="Texture2D" uid="uid://dtgq57m0vmyfb" path="res://hex stuff/d2.png" id="5_ffuv8"]
 [ext_resource type="Script" uid="uid://d21oc8k11wcyu" path="res://hex stuff/score.gd" id="5_nuo3n"]
 [ext_resource type="Texture2D" uid="uid://dkc8wd6q5o0wb" path="res://hex stuff/d3.png" id="6_mxfnm"]
@@ -14,6 +16,20 @@
 [ext_resource type="Texture2D" uid="uid://3y2pn55abb6x" path="res://hex stuff/d5.png" id="8_nuo3n"]
 [ext_resource type="Texture2D" uid="uid://cp0fvtgpxidcx" path="res://hex stuff/d6.png" id="9_dr6jq"]
 [ext_resource type="Script" uid="uid://bcov6g18r0j5w" path="res://hex stuff/gameover.gd" id="12_mxfnm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hbit7"]
+texture = ExtResource("2_dr6jq")
+texture_region_size = Vector2i(128, 111)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/next_alternative_id = 2
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5lwy"]
 texture = ExtResource("1_ei64t")
@@ -24,7 +40,11 @@ texture_region_size = Vector2i(128, 111)
 tile_shape = 3
 tile_offset_axis = 1
 tile_size = Vector2i(128, 111)
-sources/2 = SubResource("TileSetAtlasSource_i5lwy")
+sources/4 = SubResource("TileSetAtlasSource_i5lwy")
+sources/2 = SubResource("TileSetAtlasSource_hbit7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hbit7"]
+shader = ExtResource("4_hbit7")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i5lwy"]
 load_path = "res://.godot/imported/hextile.png-40b47a6a3d87cb536778ab02d3530787.ctex"
@@ -80,6 +100,7 @@ layer_0/tile_data = PackedInt32Array(0, 2, 0, -65536, 2, 0, -1, 2, 0, 65535, 2, 
 
 [node name="layer" type="TileMapLayer" parent="." unique_id=290644159]
 texture_filter = 1
+material = SubResource("ShaderMaterial_hbit7")
 tile_map_data = PackedByteArray("AAD9/wEAAgAAAAAAAAD+/wIAAgAAAAAAAAD//wIAAgAAAAAAAAAAAAMAAgAAAAAAAAABAAIAAgAAAAAAAAACAAIAAgAAAAAAAAADAAEAAgAAAAAAAAD//wEAAgAAAAAAAAD+/wEAAgAAAAAAAAD9/wAAAgAAAAAAAAAAAAIAAgAAAAAAAAABAAEAAgAAAAAAAAACAAEAAgAAAAAAAAADAAAAAgAAAAAAAAD9////AgAAAAAAAAD+/wAAAgAAAAAAAAD//wAAAgAAAAAAAAAAAAEAAgAAAAAAAAABAAAAAgAAAAAAAAACAAAAAgAAAAAAAAADAP//AgAAAAAAAAD9//7/AgAAAAAAAAD+////AgAAAAAAAAD/////AgAAAAAAAAAAAAAAAgAAAAAAAAABAP//AgAAAAAAAAACAP//AgAAAAAAAAADAP7/AgAAAAAAAAD+//7/AgAAAAAAAAD///7/AgAAAAAAAAAAAP//AgAAAAAAAAABAP7/AgAAAAAAAAACAP7/AgAAAAAAAAD///3/AgAAAAAAAAAAAP7/AgAAAAAAAAAAAP3/AgAAAAAAAAABAP3/AgAAAAAAAAA=")
 tile_set = SubResource("TileSet_ei64t")
 
