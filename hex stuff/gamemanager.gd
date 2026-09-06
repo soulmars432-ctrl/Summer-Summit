@@ -17,4 +17,5 @@ func player_died() -> void:
 		return
 	is_game_over = true
 	game_over.emit(score)
+	Audio.play_ambient(29)
 	Audio.play(20,23)

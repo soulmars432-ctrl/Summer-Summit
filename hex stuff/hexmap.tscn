@@ -235,6 +235,22 @@ texture = ExtResource("18_7gnqv")
 font = ExtResource("19_finug")
 font_size = 32
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yn4qg"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 52.80001
+spread = 180.0
+initial_velocity_max = 92.909996
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = -1.6093254e-05
+gravity = Vector3(0, 98, 0)
+scale_min = 4.0
+scale_max = 8.0
+color = Color(0.79, 0.16589999, 0.16589999, 1)
+hue_variation_min = -0.100000024
+hue_variation_max = 0.09999997
+
 [node name="Node2D" type="Node2D" unique_id=1279603025 node_paths=PackedStringArray("tilemap")]
 script = ExtResource("1_ffuv8")
 tilemap = NodePath("layer")
@@ -447,5 +463,13 @@ text = "Restart"
 flat = true
 
 [node name="enemies" type="Node2D" parent="." unique_id=1291798679]
+
+[node name="Blood" type="GPUParticles2D" parent="." unique_id=1102532604]
+emitting = false
+amount = 32
+lifetime = 0.58
+explosiveness = 1.0
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_yn4qg")
 
 [connection signal="pressed" from="GameOver/Background/Restart" to="GameOver" method="_on_restart_pressed"]
